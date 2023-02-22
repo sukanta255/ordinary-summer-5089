@@ -38,7 +38,7 @@ import {
                                 <UnorderedList>
                                 <ListItem className="download">
                                     <a
-                                    href="facebook.com"
+                                    href="https://www.facebook.com/koovs"
                                     target={"_blank"}
                                     className="facebook-logo22"
                                     >
@@ -49,7 +49,7 @@ import {
                                     <Text as="span">1.8M Followers</Text>
                                     </a>
                                     <a
-                                    href="https://play.google.com/store/apps/details?id=com.licious&pli=1"
+                                    href="https://www.instagram.com/koovsfashion/"
                                     target={"_blank"}
                                     >
                                     <Image
