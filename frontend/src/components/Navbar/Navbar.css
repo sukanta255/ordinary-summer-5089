@@ -1,0 +1,106 @@
+.first-header {
+    position: static;
+    width: 98%;
+    top: 0;
+    left: 0;
+    /* background-color: #eaeaea; */
+  }
+  .navbar_top {
+    padding: 2px 0;
+    /* background: #eaeaea; */
+    /* border: 3px solid red; */
+    
+  }
+  .container {
+    /* max-width: 1600px; */
+    width: 100%;
+    /* padding-left: 8%; */
+    margin: 0 auto;
+    /* border: 2px solid red; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    border-radius: 0;
+    border-color: #ccc;
+    border-width: 0 0 1px 0;
+    border-style: none none solid none;
+  }
+  .header_menu {
+    /* display: inline-block; */
+    /* text-align: left; */
+    display: flex;
+    width: 40%;
+    height: 30px;
+    /* border: 1px solid green; */
+    align-items: center;
+  }
+  .header_menu ul {
+    display: flex;
+    padding: 0;
+    list-style-type: none;
+  }
+  .header_menu ul li {
+    font-size: 13px;
+    line-height: 1;
+    padding: 0 15px;
+    color: #4a4a4a;
+    vertical-align: middle;
+    /* border: 1px solid red; */
+  }
+
+  .download span {
+    display: inline-block;
+    vertical-align: middle;
+    color: black;
+    font-size: 15px;
+  }
+  .download a {
+    margin-left: 30px;
+    display: inline-block;
+    color: #4a4a4a;
+    vertical-align: middle;
+  }
+  .download a:hover{
+    color: #4a4a4a;
+  }
+  .download span:hover{
+    color: rgba(0,0,0,0.55)
+  }
+  .download a img {
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 0;
+    margin-right: 5px;
+  }
+  .down_arrow{
+    font-size: 15px;
+    /* border: 1px solid black; */
+    cursor: pointer;
+    /* width: 50px; */
+    background-color: white;
+  }
+  .down_arrow:hover{
+    color: #4a4a4a;
+  }
+  .header_right {
+    width: 65%;
+    display: inline-block;
+    vertical-align: middle;
+    /* border: 1px solid brown; */
+    /* text-align: center; */
+  }
+  .header_right span{
+    text-align: center;
+  }
+  .header_right {
+    cursor: pointer;
+  }
+  .down_arrow3 Button{
+    background-color: white;
+  }
+  /* //////////////////////////////navbar second part////////////////////// */
+
+
+
+
