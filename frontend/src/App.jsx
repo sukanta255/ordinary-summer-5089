@@ -3,7 +3,7 @@ import AllRoutes from "./components/Routes/AllRoutes";
 
 function App() {
   return (
-    <Box>
+    <Box style={{fontFamily: 'Jost'}}>
       <AllRoutes />
     </Box>
   );
