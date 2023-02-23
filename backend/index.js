@@ -1,6 +1,7 @@
 const express=require("express")
 const {connection}=require("./db")
  const {AddDataRouter}=require("./routes/DataAdd.routes")
+ require("dotenv").config()
 
 const cors=require("cors")
 
@@ -13,7 +14,7 @@ app.get("/",(req,res)=>{
 })
 app.use("/adddata",AddDataRouter)
 
-app.listen(4100,async()=>{
+app.listen(process.env.port,async()=>{
     try{
         await connection
         console.log("connected to db")

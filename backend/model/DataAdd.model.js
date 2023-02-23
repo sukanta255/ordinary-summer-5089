@@ -4,12 +4,17 @@ const AddDataSchema=mongoose.Schema({
     price:Number,
     description:String,
     image:String,
-    productType:String,
-    isScale:Boolean,
+    badgeType:String,
+    isMale:Boolean,
+    reducedPrice:String,
+    hasMultiplePrices:Boolean,
+    isOutlet:Boolean,
     isSellingFast:Boolean,
     color:String,
     categoryName:String,
+    mainCatagory:String,
     brandName:String,
+    productRating:Number,
     productDescription:String
 })
 
@@ -20,16 +25,21 @@ module.exports={
 }
  
 
-// {
-      
-//     "price": "45.95",
-//     "description": "Pull&Bear roll neck jumper in black",
+// {      
+//     "price": 3000,
+//     "description": " winter Pull&Bear roll neck jumper in black",
 //     "image": "https://images.asos-media.com/products/pullbear-roll-neck-jumper-in-black/203957880-1-black",
-//     "productType": "Product",
-//     "isSale": false,
+//     "badgeType":"",
+//     "isMale":false,
+//     "reducedPrice":"",
+//     "hasMultiplePrices":false,
+//     " isOutlet":false,
 //     "isSellingFast": false,
-//     "colour": "black",
+//     "color":"red",
 //     "categoryName": "New in",
-//     "brandName": "Pullbear",
-//     "productDescription": "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit"
-//   }
+//     "mainCatagory":"",
+//     "brandName": "metronout",
+//     "productRating":"",
+//     "productDescription": "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit",
+//     "__v": 0
+// }

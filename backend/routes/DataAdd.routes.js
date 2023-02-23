@@ -19,6 +19,31 @@ AddDataRouter.post("/create",async(req,res)=>{
     res.send({"msg":"data is Addwd"})
 })
 
+AddDataRouter.patch("/update/:id",async(req,res)=>{
+    const payload=req.body
+    const id=req.params.id
+    const AddData=await AddDataModel.findOne({"_id":id})
+    // console.log(AddData)
+    // res.send(AddData)
+    try{
+        await AddDataModel.findByIdAndUpdate({"_id":id},payload)
+        res.send("kapda updated")
+    }catch(err){
+        res.send({"msg":"something went wrong"})
+    }
+}) 
+
+AddDataRouter.delete("/delete/:id",async(req,res)=>{
+    
+    const id=req.params.id
+    try{
+        await AddDataModel.findByIdAndDelete({"_id":id})
+        res.send("kapda deleted")
+    }catch(err){
+        res.send({"msg":"something went wrong",err})
+    }
+}) 
+
 module.exports={
     AddDataRouter
 }
