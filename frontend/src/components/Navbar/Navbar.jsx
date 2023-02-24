@@ -307,7 +307,9 @@ import {
                     <p>Artist Collab  <ChevronRightIcon/></p>
                   </Box>
                 </DrawerBody>
+                <Box display="flex" flexDirection="column" gap="20px" marginLeft="25px">
                   <p className='myaccount123'>My Account</p>
+                </Box>
                 <DrawerHeader mt={12} display="flex" flexDirection="column" width="40%">
                   <Button bgColor="black" color="white" colorScheme = "none">Login</Button>
                   <Button variant="outline"  border =" 1px solid black"  colorScheme = "none">Register</Button>

@@ -1,0 +1,124 @@
+
+.best_seller_item_detail{
+    padding: 15px 15px 0;
+    color: #4a4a4a;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    /* border: 5px solid green; */
+  }
+  .best_seller_item_detail{
+    width: 100%;
+    /* border: 5px solid red; */
+    /* padding-right: 35px; */
+    /* font-size: 15px; */
+    font-weight: 600;
+    margin: 0 0 10px;
+    min-height: 42px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient:vertical;
+    position: relative;
+    line-height: 1.6;
+  }
+   .best_seller_product_name{
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+   }
+   .best_seller_item_desc{
+    /* border: 5px solid green; */
+    /* font-family: Source Sans Pro; */
+    font-size: 14px;
+    color: #727272;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /* margin-bottom: 10px; */
+    overflow: hidden;
+   }
+   .best_seller_item_weight{
+    font-family: Source Sans Pro;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px 0;
+   }
+   .best_seller_item_weight span{
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 25px;
+      position: relative;
+   }
+   .best_seller_item_action{
+    display: flex;
+    justify-content: space-between;
+   }
+   .best_seller_item_action .rate{
+     float: left;
+     font-size: 18px;
+     /* color: ; */
+     font-weight: 600;
+     line-height: 2;
+     overflow: hidden;
+     white-space: nowrap;
+     margin-bottom: 8px;
+   }
+ 
+  .action{
+    float: right;
+    text-align: right;
+    height: 50px;
+    overflow: hidden;
+    /* border: 1px solid black; */
+    margin-bottom: 5px;
+  }
+  .action .action_slider{
+    transition: all 250ms ease-in;
+  }
+  .action .action_slider button{
+    font-size: 25px;
+
+    color: black;
+    /* border: 1px solid black; */
+    /* padding: 10px 12px; */
+    cursor: pointer;
+    /* font-weight: 600; */
+    border-radius: 50%;
+    background-color: white;
+    height: 50px;
+    /* width: 100px; */
+  }
+  .action .action_slider button:hover{
+    background-color: black;
+    color: white;
+  }
+  .top_content{
+    display: flex;
+    justify-content: space-between;
+  }
+  .content .top_content .title{
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.33;
+    color: #000;
+  }
+
+  /* ************************ */
+  /* @media only screen and (min-width: 600px) {
+    .mainCat{
+      justify-content: center;
+      width: 85%;
+      margin: auto;
+    }
+  } */
+  /* 
+  @media only screen and (min-width: 800px) {
+    .mainCat{
+      justify-content: center;
+      width: 85%;
+      margin: auto;
+    }
+  } */
