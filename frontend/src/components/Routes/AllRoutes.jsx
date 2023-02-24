@@ -11,6 +11,9 @@ const AllRoutes=()=>{
                 <Route path="/" element={<HomePage/>} />
                 <Route path="/products" element={<Productspage/>} />
                 <Route path="/products/:_id" element={<SingleProductPage/>} />
+                
+
+
             </Routes>
         </div>
     );
