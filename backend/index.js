@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 app.use("/users", userRouter);
 app.use(authenticator);
-app.use("/posts", postRouter);
 
 app.listen(process.env.port, async () => {
   try {
