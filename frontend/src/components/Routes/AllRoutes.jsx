@@ -12,6 +12,8 @@ const AllRoutes=()=>{
             <Routes>
                 <Route path="/" element={<HomePage/>} />
                 <Route path="/products" element={<Productspage/>} />
+                     <Route path="/admindashboard" element={<AdminDashboard/>} /> 
+                <Route path="/admin" element={<AdminDashboard/>} /> 
 
             </Routes>
         </div>
