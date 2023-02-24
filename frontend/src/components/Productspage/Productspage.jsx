@@ -106,14 +106,15 @@ const Productspage = () => {
       productDescription: "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit",
     },
   ];
+  const [minVal, setMinVal] = useState(250);
+  const [maxVal, setMaxVal] = useState(2500);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const [minVal, setMinVal] = useState(250);
-  const [maxVal, setMaxVal] = useState(2800);
+
   return (
     <Flex w={"100%"} direction={"column"}>
-      <Heading>product v Page</Heading>
+      <Heading>product Page</Heading>
 
       <Flex px={"8"} gap={"2"} justifyContent={"flex-Start"} w={"100%"}>
         <Button fontSize={"sm"} bgColor={"white"} _hover={{ bgColor: "white" }} gap={"2"} onClick={onOpen}>
@@ -131,16 +132,20 @@ const Productspage = () => {
 
           <DrawerBody>
             <Flex justifyContent={"space-evenly"}>
-              <Text>Min :{minVal}</Text>
-              <Text>Max :{maxVal}</Text>
+              <Text>Min: {minVal}</Text>
+              <Text>Max: {maxVal}</Text>
             </Flex>
             <RangeSlider
               // aria-label={["min", "max"]}
               defaultValue={[minVal, maxVal]}
               min={0}
               max={4000}
-              onChangeEnd={(val) => setMaxVal(val)}
-              onChangeStart={(val) => setMinVal(val)}
+              onChangeEnd={(val) => {
+                setMaxVal(val[1]);
+              }}
+              onChangeStart={(val) => {
+                setMinVal(val[0]);
+              }}
             >
               <RangeSliderTrack bg="grey">
                 <RangeSliderFilledTrack bg="black" />
@@ -158,8 +163,8 @@ const Productspage = () => {
         </DrawerContent>
       </Drawer>
       <SimpleGrid m={"8"} columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }} spacing={"8"}>
-        {data.map((el) => (
-          <ProductCard el={el} />
+        {data.map((el, id) => (
+          <ProductCard key={id} el={el} />
         ))}
       </SimpleGrid>
     </Flex>
