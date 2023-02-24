@@ -1,40 +1,57 @@
+import React from 'react';
 import {
-    Flex,
-    Box,
-    FormControl,
-    FormLabel,
-    Input,
-    InputGroup,
-    HStack,
-    InputRightElement,
-    Stack,
-    Button,
-    Heading,
-    Text,
-    useColorModeValue,
-    Link,
-  } from '@chakra-ui/react';
-  import { useState } from 'react';
-  import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-  
-  export default function SignUp() {
-    const [showPassword, setShowPassword] = useState(false);
-  
-    return (
-      <Flex
-        minH={'100vh'}
-        align={'center'}
-        justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Stack align={'center'}>
-            <Heading fontSize={'4xl'} textAlign={'center'}>
-              Sign up
-            </Heading>
-            <Text fontSize={'lg'} color={'gray.600'}>
-              to enjoy all of our cool features ✌️
-            </Text>
-          </Stack>
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  HStack,
+  InputRightElement,
+  Stack,
+  Button,
+  Heading,
+  Text,
+  useColorModeValue,
+  Link,
+} from '@chakra-ui/react';
+import { useContext, useState } from 'react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
+import { Appcontext } from '../Context/Appcontext';
+
+export default function SignUp() {
+
+  const [user, setUser] = useState({});
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  }
+
+  const { handleSignup } = useContext(Appcontext);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  return (
+    <Flex
+      minH={'100vh'}
+      align={'center'}
+      justify={'center'}
+      bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Heading fontSize={'4xl'} textAlign={'center'}>
+            Sign up
+          </Heading>
+          <Text fontSize={'lg'} color={'gray.600'}>
+            to enjoy all of our cool features ✌️
+          </Text>
+        </Stack>
+        <form
+          onSubmit={(e) => handleSignup(e, user)}
+        >
           <Box
             rounded={'lg'}
             bg={useColorModeValue('white', 'gray.700')}
@@ -45,24 +62,24 @@ import {
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
+                    <Input onChange={handleChange} name="firstname" type="text" />
                   </FormControl>
                 </Box>
                 <Box>
                   <FormControl id="lastName">
                     <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
+                    <Input onChange={handleChange} name="lastname" type="text" />
                   </FormControl>
                 </Box>
               </HStack>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input onChange={handleChange} name="email" type="text" />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} />
+                  <Input onChange={handleChange} name="password" type={showPassword ? 'text' : 'password'} />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -76,6 +93,8 @@ import {
               </FormControl>
               <Stack spacing={10} pt={2}>
                 <Button
+                  type="submit"
+                  // value={"Submit"}
                   loadingText="Submitting"
                   size="lg"
                   bg={'blue.400'}
@@ -93,7 +112,8 @@ import {
               </Stack>
             </Stack>
           </Box>
-        </Stack>
-      </Flex>
-    );
-  }
+        </form>
+      </Stack>
+    </Flex>
+  );
+}
