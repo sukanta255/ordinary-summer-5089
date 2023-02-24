@@ -1,6 +1,5 @@
 
 const express=require("express")
-const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user");
 const { authenticator } = require("./middleware/authentication");
 const {connection}=require("./db")
