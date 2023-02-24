@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    background-color:plum;
+    width: 60%;
+    justify-content: space-evenly;
+    border:2px solid green;
+
+}
+.container input{
+    /* margin-top: 10px; */
+    justify-content: space-between;
+    padding: 4px;
+    width: 40%;
+    margin: auto;
+    margin-top: 1%;
+}
+.container button{
+    width: 30%;
+    margin: auto;
+    color:white;
+    background-color: #181535;
+    margin-top: 1%;
+    border-radius: 5%;
+    padding: 1%;
+}
