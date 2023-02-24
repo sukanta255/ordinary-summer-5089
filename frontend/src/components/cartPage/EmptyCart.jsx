@@ -8,7 +8,7 @@ import {
   } from "@chakra-ui/react";
   import React from "react";
   import { Link } from "react-router-dom";
-  import Footer from "../Pages/Footer";
+  // import Footer from "../Pages/Footer";
   
   const EmptyCart = () => {
     return (
@@ -94,7 +94,7 @@ import {
             </Box>
           </SimpleGrid>
         </Box>
-        <Footer />
+        {/* <Footer /> */}
       </Box>
     );
   };

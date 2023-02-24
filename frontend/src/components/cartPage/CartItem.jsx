@@ -2,7 +2,7 @@ import { CheckCircleIcon, SmallCloseIcon } from '@chakra-ui/icons'
 import { Flex, Image, Text, Box, Circle, Heading, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteToCart } from '../Redux/cart/cart.actions'
+import { deleteToCart } from '../../Redux/cart/cart.action'
 
 const CartItem = ({ image_link, name, price, id, brand }) => {
     const toast = useToast()
