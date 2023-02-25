@@ -36,7 +36,7 @@ export default function Login() {
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'}>Login to your account</Heading>
                     <Text fontSize={'lg'} color={'gray.600'}>
-                        to enjoy all of our cool <Link color={'blue.400'}>features</Link>
+                        Create New Account <Link href='/signup' color={'blue.400'}>Register Here</Link>
                     </Text>
                 </Stack>
                 <form onSubmit={(e) => handleLogin(e, user)}>
@@ -68,8 +68,9 @@ export default function Login() {
                                     bg={'blue.400'}
                                     color={'white'}
                                     _hover={{
-                                        bg: 'blue.500',
-                                    }}>
+                                        bgImage: "linear-gradient(to right, #58aa50 ,#f09e06 )",
+                                    }}
+                                    bgImage={"linear-gradient(to right, #f09e06 , #fc490b )"}>
                                     Sign in
                                 </Button>
                             </Stack>

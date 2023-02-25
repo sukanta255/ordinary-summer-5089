@@ -46,7 +46,7 @@ export default function SignUp() {
             Sign up
           </Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool features ✌️
+            to enjoy all of our cool feature
           </Text>
         </Stack>
         <form
@@ -100,14 +100,16 @@ export default function SignUp() {
                   bg={'blue.400'}
                   color={'white'}
                   _hover={{
-                    bg: 'blue.500',
-                  }}>
+                    bgImage: "linear-gradient(to right, #58aa50 ,#f09e06 )",
+                  }}
+                  bgImage={"linear-gradient(to right, #f09e06 , #fc490b )"}
+                >
                   Sign up
                 </Button>
               </Stack>
               <Stack pt={6}>
                 <Text align={'center'}>
-                  Already a user? <Link color={'blue.400'}>Login</Link>
+                  Already a user? <Link href='login' color={'blue.400'}>Login</Link>
                 </Text>
               </Stack>
             </Stack>
