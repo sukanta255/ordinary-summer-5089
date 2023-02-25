@@ -13,7 +13,7 @@ const AddData = () => {
   const [isMale,setIsmale]=useState("")
   const [reducePrice,setReducedPrice]=useState("")
   const [hasMultiplePrices,setHasMultiplePrice]=useState("")
-  const [isOutlet,setIsOutlet]=useState(false)
+
   const [isSellingFast,setIsSellingFast]=useState("")
   const [color,setColor]=useState("")
   const [categoryName,setCategoryName]=useState("")
@@ -41,6 +41,7 @@ const AddData = () => {
       quantity:1
     }
     console.log(payload)
+
    }
 
 
@@ -49,16 +50,7 @@ const AddData = () => {
         
       
        <div className={styles.container}>
-        <input type="text" value={price}  placeholder='Price' onChange={(e)=>setPrice(e.target.value)}/>
-        <input type="text" value={description}  placeholder='Description' onChange={(e)=>setDiscription(e.target.value)}/>
-        <input type="text" value={image}  placeholder='Image' onChange={(e)=>setImage(e.target.value)}/>
-        <input type="text" value={badgeType}  placeholder='badgeType' onChange={(e)=>setBadgeType(e.target.value)}/>
-        <label>ismale</label>
-        <input type="radio" value={isMale}  placeholder='isMale' onChange={(e)=>setIsmale(e.target.value)}/>
-        <input type="text" value={reducePrice}  placeholder='reducePrice' onChange={(e)=>setReducedPrice(e.target.value)}/>
-        <input type="text" value={hasMultiplePrices}  placeholder='hasMultiplePrices' onChange={(e)=>setHasMultiplePrice(e.target.value)}/>
-        <input type="text" value={isOutlet}  placeholder='isOutlet' onChange={(e)=>setIsOutlet(e.target.value)}/>
-        <input type="text" value={isSellingFast}  placeholder='isSellingFast' onChange={(e)=>setIsSellingFast(e.target.value)}/>
+
         <input type="text" value={color}  placeholder='Color' onChange={(e)=>setColor(e.target.value)}/>
         <input type="text" value={categoryName}  placeholder='categoryName' onChange={(e)=>setCategoryName(e.target.value)}/>
         <input type="text" value={mainCategory}  placeholder='mainCategory' onChange={(e)=>setMainCategory(e.target.value)}/>
