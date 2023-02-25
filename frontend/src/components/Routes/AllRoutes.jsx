@@ -11,7 +11,12 @@ const AllRoutes=()=>{
             <Routes>
                 <Route path="/" element={<HomePage/>} />
                 <Route path="/products" element={<Productspage/>} />
-
+                <Route path="/products/:id" element={<SingleProductPage/>} />
+                <Route path="/cartpage" element={<CartItem/>} />
+                <Route path="/emptycart" element={<EmptyCart/>} />
+               
+                     <Route path="/admindashboard" element={<AdminDashboard/>} /> 
+                <Route path="/admin" element={<AdminDashboard/>} /> 
             </Routes>
         </div>
     );
