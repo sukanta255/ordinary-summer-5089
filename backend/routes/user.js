@@ -36,8 +36,8 @@ userRouter.post("/login", async (req, res) => {
     if (isPasswordCorrect) {
       const token = await jwt.sign(
         { email: user.email, userId: user._id },
-        process.env.key,
-        { expiresIn: 60 * 60 }
+        "masai",
+        // { expiresIn: 60 * 60 }
       );
       res.json({ msg: "Login success", token });
     } else {
