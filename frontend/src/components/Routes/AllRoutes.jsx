@@ -6,6 +6,8 @@ import Productspage from "../Productspage/Productspage";
 import SingleProductPage from "../Productspage/SingleProductPage";
 import CartItem from "../cartPage/CartItem";
 import EmptyCart from "../cartPage/EmptyCart";
+import AddData from "../AdminPage/AddData";
+
 
 const AllRoutes = () => {
   return (
@@ -16,6 +18,9 @@ const AllRoutes = () => {
         <Route path="/products/:id" element={<SingleProductPage />} />
         <Route path="/cartpage" element={<CartItem />} />
         <Route path="/emptycart" element={<EmptyCart />} />
+        <Route path="/admin" element={<AddData/>} />
+
+
       </Routes>
     </div>
   );
