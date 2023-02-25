@@ -15,9 +15,10 @@ const AllRoutes=()=>{
             <Routes>
                 <Route path="/" element={<HomePage/>} />
                 <Route path="/products" element={<Productspage/>} />
+                <Route path="/products/:id" element={<SingleProductPage/>} />
 
-                <Route path="/cartPage" element={<CartItem/>} />
-                <Route path="/emptyCart" element={<EmptyCart/>} />
+                <Route path="/cartpage" element={<CartItem/>} />
+                <Route path="/emptycart" element={<EmptyCart/>} />
                
                      <Route path="/admindashboard" element={<AdminDashboard/>} /> 
                 <Route path="/admin" element={<AdminDashboard/>} /> 
