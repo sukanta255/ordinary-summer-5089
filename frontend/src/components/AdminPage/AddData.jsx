@@ -13,7 +13,7 @@ const AddData = () => {
   const [isMale,setIsmale]=useState("")
   const [reducePrice,setReducedPrice]=useState("")
   const [hasMultiplePrices,setHasMultiplePrice]=useState("")
-  const [isOutlet,setIsOutlet]=useState("")
+
   const [isSellingFast,setIsSellingFast]=useState("")
   const [color,setColor]=useState("")
   const [categoryName,setCategoryName]=useState("")
@@ -41,16 +41,7 @@ const AddData = () => {
       quantity:1
     }
     console.log(payload)
-    fetch("http://localhost:4100/adddata/create",{
-      method:"POST",
-      body:JSON.stringify(payload),
-      headers:{
-        "Content-type":"application/json",
-        "Authorization":localStorage.getItem("token")
-      }
-    }).then(res=>res.json())
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err))
+
    }
 
 
@@ -59,43 +50,7 @@ const AddData = () => {
         
       
        <div className={styles.container}>
-        <input type="number" value={price}  placeholder='Price' onChange={(e)=>setPrice(e.target.value)}/>
-        <input type="text" value={description}  placeholder='Description' onChange={(e)=>setDiscription(e.target.value)}/>
-        <input type="text" value={image}  placeholder='Image' onChange={(e)=>setImage(e.target.value)}/>
-        <input type="text" value={badgeType}  placeholder='badgeType' onChange={(e)=>setBadgeType(e.target.value)}/>
-        <div className={styles.radiobtn}>
-        Ismale:
-        <label for="genderT">True</label>
-        <input type="radio" id='genderT' value={true} name="gender" onChange={(e)=>setIsmale(e.target.value)} />
-        <label for="genderF">False</label>
-        <input  type="radio" id='genderF' value={false} name="gender" onChange={(e)=>setIsmale(e.target.value)} />
-        </div>
-       
-        <input  type="text" value={reducePrice}  placeholder='reducePrice' onChange={(e)=>setReducedPrice(e.target.value)}/>
-        <div className={styles.radiobtn} >
-        hasMultiplePrices:
-        <label for="hasMultiplePricesT">True</label>
-        <input type="radio" id='hasMultiplePricesT' name='hasMultiplePrices' value={true} onChange={(e)=>setHasMultiplePrice(e.target.value)}/>
-        <label for="hasMultiplePricesF">False</label>
-        <input type="radio" id='hasMultiplePricesF' name='hasMultiplePrices' value={false} onChange={(e)=>setHasMultiplePrice(e.target.value)}/>
-         
-        </div>
 
-        <div className={styles.radiobtn} >
-        IsOutlet:
-        <label for="isoutletT">True</label>
-        <input type="radio" value={true} id="isoutletT" name="isoutlet" onChange={(e)=>setIsOutlet(e.target.value)}  />
-        <label for="isoutletF">False</label>
-        <input type="radio"  value={false} id="isoutletF" name="isoutlet" onChange={(e)=>setIsOutlet(e.target.value)} />
-        </div>
-        <div className={styles.radiobtn}>
-          IsSellimgFast
-        <label for="isSellingFastT">True</label>
-        <input type="radio" id="isSellingFastT" value={true} name="isSellingFast"  onChange={(e)=>setIsSellingFast(e.target.value)}/>
-        <label for="isSellingFastF">False</label>
-        <input type="radio" id="isSellingFastF" value={false} name="isSellingFast" onChange={(e)=>setIsSellingFast(e.target.value)}/>
-
-        </div>
         <input type="text" value={color}  placeholder='Color' onChange={(e)=>setColor(e.target.value)}/>
         <input type="text" value={categoryName}  placeholder='categoryName' onChange={(e)=>setCategoryName(e.target.value)}/>
         <input type="text" value={mainCategory}  placeholder='mainCategory' onChange={(e)=>setMainCategory(e.target.value)}/>
