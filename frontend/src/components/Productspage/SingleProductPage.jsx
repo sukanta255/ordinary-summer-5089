@@ -68,7 +68,7 @@ const SingleProductPage = () => {
         <Flex mx={"12"} mt={"8"} direction={{ base: "column", sm: "column", md: "row" }}>
           {/* Image Box */}
           <Flex flex={1}>
-            <Show above={"md"}>
+            <Show above={"lg"}>
               <Flex flex={1} direction={"column"} justifyContent={"flex-start"} alignItems={"center"}>
                 <Image p={"3"} src={data.image} alt={"Broken Data"} w={"100%"} />
               </Flex>
