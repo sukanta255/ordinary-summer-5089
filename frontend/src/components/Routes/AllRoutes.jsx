@@ -7,6 +7,7 @@ import SingleProductPage from "../Productspage/SingleProductPage";
 import CartItem from "../cartPage/CartItem";
 import EmptyCart from "../cartPage/EmptyCart";
 import AddData from "../AdminPage/AddData";
+import PaymentPage from "../PaymentPage/PaymentPage";
 
 
 const AllRoutes = () => {
@@ -19,6 +20,7 @@ const AllRoutes = () => {
         <Route path="/cartpage" element={<CartItem />} />
         <Route path="/emptycart" element={<EmptyCart />} />
         <Route path="/admin" element={<AddData/>} />
+        <Route path="/payment" element={<PaymentPage/>}/>
       </Routes>
     </div>
   );

@@ -2,7 +2,7 @@ import { Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { BsStar } from "react-icons/bs";
 
-const ProductCard = ({ el }) => {
+const ProductCard = ({ el, HandleSingleProduct }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const over = (e) => {
@@ -12,10 +12,11 @@ const ProductCard = ({ el }) => {
     setIsVisible(false);
   };
   return (
-    <Flex direction={"column"}>
+    <Flex direction={"column"} onClick={() => HandleSingleProduct(el._id)}>
       <Flex position={"relative"} onMouseOver={over} onMouseOut={out}>
         <Image src={el.image} w={"100%"} alt={"Broken Data"} />
         <IconButton
+          zIndex={"5"}
           transition={"1000ms"}
           display={isVisible ? "flex" : "none"}
           icon={<BsStar />}
