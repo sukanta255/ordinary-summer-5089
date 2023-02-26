@@ -4,11 +4,11 @@ import {
     GET_CART_PRODUCTS,
     RESET_CART,
   } from "./cart.action.type";
-  // const initialState={
-  //   products:[],
-  //   isLoading:false,
-  //   isError:false
-  // }
+  const initialState={
+    products:[],
+    isLoading:false,
+    isError:false
+  }
   // let initialState = {
   //   products: JSON.parse(localStorage.getItem("cartItems")) || [],
   // };
