@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseURL = ``;
+const BaseURL = `https://enchanting-gold-tie.cyclic.app/`;
 
 export const getFullData = async (url) => {
   try {

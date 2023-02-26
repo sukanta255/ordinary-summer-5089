@@ -19,8 +19,6 @@ const AllRoutes = () => {
         <Route path="/cartpage" element={<CartItem />} />
         <Route path="/emptycart" element={<EmptyCart />} />
         <Route path="/admin" element={<AddData/>} />
-
-
       </Routes>
     </div>
   );
