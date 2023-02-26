@@ -11,7 +11,7 @@ const AdminDashboard = () => {
         <Box w={"20%"}>
             <AdminSidebar/>
         </Box>
-        {/* <Box w={"100%"}> <PieChart/></Box> */}
+        <Box w={"100%"}> <PieChart/></Box>
      </Box>
     
 
