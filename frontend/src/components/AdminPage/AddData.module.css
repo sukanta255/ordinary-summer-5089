@@ -6,7 +6,7 @@
     margin: auto;
     flex-direction: column;
     background-color:plum;
-    width: 60%;
+    align-items: center;
     justify-content: space-evenly;
     border:2px solid green;
 
