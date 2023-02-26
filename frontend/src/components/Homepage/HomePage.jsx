@@ -30,6 +30,7 @@ import { GrView } from "react-icons/gr";
 import axios from 'axios';
 import "./HomePage.css";
 import { BsArrowRightShort} from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 
 ///////////////////////first mens part for arrow start//////////////////////////////////////////////////////////////////////////////////
@@ -103,9 +104,11 @@ const SingleImage= ({ el }) => {
   return (
     <Flex direction={"column"}>
       <Flex position={"relative"} onMouseOver={over} onMouseOut={out} >
+        <Link to='/products'> 
         <Flex transition={"1000ms"}>
             <ImageChangeOnMouseOverr/>
         </Flex>
+        </Link>
         <IconButton
           transition={"500ms"}
           display={isVisible ? "flex" : "none"}
@@ -207,9 +210,11 @@ const SingleImage2= ({ el }) => {
     return (
       <Flex direction={"column"}>
         <Flex position={"relative"} onMouseOver={over} onMouseOut={out} >
-          <Flex transition={"1000ms"}>
-              <ImageChangeOnMouseOverr/>
-          </Flex>
+        <Link to='/products'> 
+        <Flex transition={"1000ms"}>
+            <ImageChangeOnMouseOverr/>
+        </Flex>
+        </Link>
           <IconButton
             transition={"500ms"}
             display={isVisible ? "flex" : "none"}
@@ -352,9 +357,10 @@ const HomePage=()=>{
                     {womenData.map((el)=>{
                     return(
                         <Box key={el.id}   borderWidth={'1px'} borderRadius='lg' overflow={'hidden'} >
-                        <Image src={el.image} alt={el.title} 
-                        
-                        /> 
+                          <Link to='/products'> 
+                              <Image src={el.image} alt={el.title}                             
+                            /> 
+                            </Link>                       
                             <Box className='best_seller_item_detail'>
                                 <span className='best_seller_product_name'>{el.title}</span>
                         <Box className='best_seller_item_action'>
