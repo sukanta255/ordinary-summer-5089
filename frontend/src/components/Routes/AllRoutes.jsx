@@ -31,10 +31,6 @@ const AllRoutes = () => {
         <Route path="/updatedata" element={<UpdateData/>} />
         <Route path="/chart" element={<PieChart/>} />
 
-
-
-
-
       </Routes>
     </div>
   );
