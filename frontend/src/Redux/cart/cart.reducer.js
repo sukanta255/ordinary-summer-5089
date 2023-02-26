@@ -4,17 +4,21 @@ import {
     GET_CART_PRODUCTS,
     RESET_CART,
   } from "./cart.action.type";
-  
-  let initialState = {
-    products: JSON.parse(localStorage.getItem("cartItems")) || [],
-  };
+  const initialState={
+    products:[],
+    isLoading:false,
+    isError:false
+  }
+  // let initialState = {
+  //   products: JSON.parse(localStorage.getItem("cartItems")) || [],
+  // };
   const cartReducer = (state = initialState, { type, payload }) => {
     switch (type) {
       case ADD_TO_CART: {
-        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-        cartItems.push(payload);
+        // let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        // cartItems.push(payload);
   
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        // localStorage.setItem("cartItems", JSON.stringify(cartItems));
   
         return { ...state, products: [...state.products, payload] };
       }
