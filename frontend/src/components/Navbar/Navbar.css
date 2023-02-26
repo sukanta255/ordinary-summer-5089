@@ -129,6 +129,7 @@ width: 500px;
 
 .cartValue{
 /* border: 1px solid #da3f3f; */
+z-index: 1;
 height: 20px;
 width: 20px;
 border-radius: 50%;
@@ -136,7 +137,7 @@ background-color: #da3f3f;
 color: white;
 position: absolute;
 text-align: center;
-right: -18px; top: -13px; 
+left: 30px;
 font-size: 12px;
 
 }
