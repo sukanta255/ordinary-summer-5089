@@ -15,6 +15,7 @@ import {
     MenuList,
     MenuItem,
     Hide,
+    Stack,
     Drawer,
     DrawerBody,
     DrawerCloseButton,
@@ -26,21 +27,17 @@ import {
   } from "@chakra-ui/react";
   import { Link } from "react-router-dom";
   import "./Navbar.css"
-  import { HamburgerIcon, Search2Icon, SearchIcon ,ChevronRightIcon} from "@chakra-ui/icons";
-  import { VscAccount } from "react-icons/vsc";
+  import { ChevronRightIcon} from "@chakra-ui/icons";
   import { AiOutlineStar} from "react-icons/ai";
-  import { FaShippingFast, FaShoppingCart, FaRegUser } from "react-icons/fa";
   import { BiChevronDown } from "react-icons/bi";
-  import { RiBattery2ChargeFill, RiCoinsFill,RiShoppingBagLine } from "react-icons/ri";
-  import { MdLocalOffer, MdOutlineSmartphone } from "react-icons/md";
-  import { BiDollar } from "react-icons/bi";
-  import { TbDiscount2, TbGift } from "react-icons/tb";
   import {HiMenu} from "react-icons/hi"
-  import { VscReferences } from "react-icons/vsc";
-  import {CgSearch} from "react-icons/cg"
-  import { Button, ButtonGroup } from '@chakra-ui/react'
-  import chakraTheme from '@chakra-ui/theme'
+  import { Button } from '@chakra-ui/react'
   import { ChevronDownIcon } from '@chakra-ui/icons'
+  import { Tooltip } from "@chakra-ui/react";
+  import { SlMagnifier } from "react-icons/sl";
+  import { BsPerson } from "react-icons/bs";
+  import { BiShoppingBag } from "react-icons/bi";
+
   const Navbar = ()=>{
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
@@ -110,10 +107,10 @@ import {
             <div className="popup">
                     <div className="contpop">
                         <div className="firstpop">
-                            <h5>Clothing</h5>
-                            <p>New in</p>
-                            <p>View all</p>
-                            <p>T-Shirts</p>
+                            <a href="products"><h5>Clothing</h5></a> 
+                            <a href="products"><p>New in</p></a> 
+                            <a href="products"><p>View all</p></a> 
+                            <a href="products"><p>T-Shirts</p></a> 
                             <p>Jackets & Coats</p>
                             <p>Hoodies & Sweatshirts</p>
                             <p>Sweetpants</p>
@@ -125,10 +122,10 @@ import {
                             <p>Keen</p>
                         </div>
                         <div className="secondpop">
-                            <h5>Brands</h5>
-                            <p>Essentials by koovs</p>
-                            <p>BALL Copenhagen</p>
-                            <p>Bravesoul</p>
+                            <a href="products"><h5>Brands</h5></a> 
+                            <a href="products"><p>Essentials by koovs</p></a> 
+                            <a href="products"><p>BALL Copenhagen</p></a> 
+                            <a href="products"><p>Bravesoul</p></a> 
                             <p>The couture club</p>
                             <p>Arkk copenhagen</p>
                             <p>SHU</p>
@@ -146,7 +143,7 @@ import {
                         </div>
                        <div className="thirdpopup">
                         <div classname="thirdpop">
-                            <img className="im3" src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/Screenshot_2022-11-10_at_5.37.53_PM.png?v=1668083230&width=533" alt="men-image11" />
+                            <Image className="im3" src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/Screenshot_2022-11-10_at_5.37.53_PM.png?v=1668083230&width=533" alt="men-image11" />
                         </div>
                        </div>
                     </div>
@@ -204,7 +201,7 @@ import {
                         </div>
                        <div className="thirdpopup">
                         <div classname="thirdpop">
-                            <img className="im4" src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/Screenshot_2022-11-10_at_6.09.16_PM.png?v=1668083985&width=533" alt="men-image12" />
+                            <Image className="im4" src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/Screenshot_2022-11-10_at_6.09.16_PM.png?v=1668083985&width=533" alt="men-image12" />
                         </div>
                       </div>
                   </div>         
@@ -231,56 +228,43 @@ import {
         </Box>
       </Box>
         <Box>
-          <img
+        <Link to='/'>
+          <Image
             className="logo hot-logo"
             src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg?v=1667889730"
             alt="logo"
           />
+        </Link>
         </Box>
-        <div style={{ display: "flex", gap: "30px" }}>
-        <div class="dropdown">
-            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-              <div id="cart-icon">
-                <Search2Icon size="1.6em" />
-              </div>
-            </div>
-            <div class="dropdown-content">
-              <p>Search</p>
-            </div>
-          </div>
-        <div class="dropdown">
-            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-              <div id="cart-icon">
-                <FaRegUser size="1.6em" />
-              </div>
-            </div>
-            <div class="dropdown-content">
-              <p>Account</p>
-            </div>
-          </div>
-          <div class="dropdown">
-            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-              <div id="cart-icon">
-                <AiOutlineStar size="1.6em" />
-                <p className="cartValue">0</p>
-              </div>
-            </div>
-            <div class="dropdown-content">
-              <p>Wishlist</p>
-            </div>
-          </div>
-          <div class="dropdown">
-            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-              <div id="cart-icon">
-                <RiShoppingBagLine size="1.6em" />
-                <p className="cartValue">0</p>
-              </div>
-            </div>
-            <div class="dropdown-content">
-              <p>Cart</p>
-            </div>
-          </div>
-        </div>
+        <Flex alignItems={"center"}>
+            <Stack direction={"row"} spacing={-2}>
+              <Tooltip hasArrow label="Search " bg="black" color="white">
+                <Button backgroundColor={"white"}>
+                  <SlMagnifier size={"20px"} />
+                </Button>
+              </Tooltip>
+              <Tooltip hasArrow label="Account " bg="black" color="white">
+                <Button as={Link} to={"/login"} backgroundColor={"white"}>
+                  <BsPerson size={"20px"} />
+                </Button>
+              </Tooltip>
+
+              <Tooltip hasArrow label="Wishlist " bg="black" color="white">
+                <Button as={Link} to={"/wishlist"} backgroundColor={"white"}>
+                  <AiOutlineStar size={"20px"} />
+                  {/* <p className="cartValue">{wishlist.length}</p> */}
+                  <p className="cartValue">0</p>
+                </Button>
+              </Tooltip>
+              <Tooltip hasArrow label="Cart " bg="black" color="white">
+                <Button as={Link} to={"/cart"} backgroundColor={"white"}>
+                  <BiShoppingBag size={"20px"} />
+                  {/* <p className="cartValue">{cartItems.length}</p> */}
+                  <p className="cartValue">0</p>
+                </Button>
+              </Tooltip>
+            </Stack>
+        </Flex>
       </Box>
       <div id="responsive_22">
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
@@ -302,39 +286,40 @@ import {
                     <br/>
                     <br/>
                     <br/>
-                    <p>Men   <ChevronRightIcon/></p>
-                    <p>Women    <ChevronRightIcon/></p>
-                    <p>Artist Collab  <ChevronRightIcon/></p>
+                    <a href="products"><p>Men<ChevronRightIcon/></p></a>    
+                    <a href="products"><p>Women<ChevronRightIcon/></p></a>    
+                    <a href="products"><p>Artist Collab<ChevronRightIcon/></p></a>                    
                   </Box>
                 </DrawerBody>
                 <Box display="flex" flexDirection="column" gap="20px" marginLeft="25px">
-                  <p className='myaccount123'>My Account</p>
+                  <a href=""><p className='myaccount123'>My Account</p></a>                    
                 </Box>
                 <DrawerHeader mt={12} display="flex" flexDirection="column" width="40%">
-                  <Button bgColor="black" color="white" colorScheme = "none">Login</Button>
-                  <Button variant="outline"  border =" 1px solid black"  colorScheme = "none">Register</Button>
+                  <Button as={Link} to={"/login"} bgColor="black" color="white" colorScheme = "none">Login</Button>
+                  <Button as={Link} to={"/register"} variant="outline"  border =" 1px solid black"  colorScheme = "none">Register</Button>
                 </DrawerHeader>
-
               </DrawerContent>
             </Drawer>
           </div>
         </div>
         <div>
-            <img style= {{width : "90px", height : "25px"}} src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg?v=1667889730" alt="logo"/>
+            <Image style= {{width : "90px", height : "25px"}} src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/koovs_final_logo.svg?v=1667889730" alt="logo"/>
         </div>
-
-        <div style={{display : "flex", gap : "30px", alignItems: "center"}}>
-            <CgSearch size="1.6em"/>
-            <div class="dropdown" style={{paddingRight : "50px"}}>
-            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-              <div id="cart-icon">
-                <RiShoppingBagLine size="1.6em" />
-                <p className="cartValue">0</p>
-              </div>
-            </div>
-            </div>
-        </div>
-
+        <Flex alignItems={"center"}>
+            <Stack direction={"row"} spacing={-2}>
+              <Tooltip hasArrow label="Search " bg="black" color="white">
+                <Button backgroundColor={"white"}>
+                  <SlMagnifier size={"20px"} />
+                </Button>
+              </Tooltip>
+              <Tooltip hasArrow label="Cart " bg="black" color="white">
+                <Button as={Link} to={"/cart"} backgroundColor={"white"}>
+                  <BiShoppingBag size={"20px"} />
+                  <p className="cartValue">0</p>
+                </Button>
+              </Tooltip>
+            </Stack>
+          </Flex>
       </div>
       </Box>
       </div>
@@ -342,4 +327,3 @@ import {
   }
 
   export default Navbar;
-
