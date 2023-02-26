@@ -1,3 +1,4 @@
+import { useToast } from "@chakra-ui/react";
 import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +11,7 @@ const AppcontextProvider = ({ children }) => {
     );
 
     const navigate = useNavigate();
+    const toast = useToast();
     const token = localStorage.getItem("authToken");
 
 
@@ -18,7 +20,7 @@ const AppcontextProvider = ({ children }) => {
 
         let { email, password } = user;
         if (email && password) {
-            fetch("http://localhost:4100/users/login", {
+            fetch("https://enchanting-gold-tie.cyclic.app/users/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -27,17 +29,36 @@ const AppcontextProvider = ({ children }) => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     if (data.msg === "Login success") {
                         localStorage.setItem("authToken",data.token)
-                        navigate("/");
+                        toast({
+                            description: "Login Success",
+                            status: 'success',
+                            duration: 2000,
+                            isClosable: true,
+                          })
+                        navigate("/",{ replace: true });
                     }
                     else if (data.msg === "Invaild credentials") {
-                        alert(data.msg);
-                        navigate("/login");
+                        toast({
+                            title: 'An error occurred.',
+                            description: 'Invaild credentials',
+                            status: 'error',
+                            duration: 1000,
+                            isClosable: true,
+                          })
+                        navigate("/login",{ replace: true });
                     }
                 })
                 .catch((err) => console.log(err));
+                toast({
+                    description: 'Invaild credentials',
+                    status: 'error',
+                    duration: 1000,
+                    isClosable: true,
+                  })
+                
         }
         else {
             alert("Please Sign Up first");
@@ -49,7 +70,7 @@ const AppcontextProvider = ({ children }) => {
 
         let { firstname, lastname, email, password} = user;
         if (firstname && lastname && email && password) {
-            fetch("http://localhost:4100/users/register", {
+            fetch("https://enchanting-gold-tie.cyclic.app/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -60,10 +81,21 @@ const AppcontextProvider = ({ children }) => {
                 .then((data) => {
                     console.log(data);
                     if (data.msg === "User registered.") {
+                        toast({
+                            description: "Registered Sucessfully",
+                            status: 'success',
+                            duration: 2000,
+                            isClosable: true,
+                          })
                         navigate("/login");
                     }
                     else if (data.msg === "Please login, user already exist") {
-                        alert(data.msg);
+                        toast({
+                            description: "Please login, user already exist",
+                            status: 'error',
+                            duration: 2000,
+                            isClosable: true,
+                          })
                         navigate("/login");
                     }
                 })
