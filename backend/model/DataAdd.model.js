@@ -6,6 +6,7 @@ const AddDataSchema=mongoose.Schema({
     image:String,
     badgeType:String,
     isMale:Boolean,
+    quantity:Number,
     reducedPrice:String,
     hasMultiplePrices:Boolean,
     isOutlet:Boolean,
@@ -16,6 +17,7 @@ const AddDataSchema=mongoose.Schema({
     brandName:String,
     productRating:Number,
     productDescription:String
+    
 })
 
 const AddDataModel=mongoose.model("AddData",AddDataSchema)

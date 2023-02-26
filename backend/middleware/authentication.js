@@ -7,7 +7,9 @@ const authenticator = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: "Not authorized!" });
     }
-    token = req.headers.authorization.split(" ")[1];
+
+    token = req.headers.authorization;
+    // token = req.headers.authorization.split(" ")[1];
     const isTokenValid = await jwt.verify(token, "masai");
     if (!isTokenValid) {
       return res.status(401).json({ message: "Not authorized!" });

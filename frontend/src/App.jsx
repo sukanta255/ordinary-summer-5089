@@ -1,12 +1,15 @@
 import { Box } from "@chakra-ui/react";
 import AllRoutes from "./components/Routes/AllRoutes";
-import SignUp from "./Pages/Signup";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+
 
 function App() {
   return (
     <Box style={{fontFamily: 'Jost'}}>
+      <Navbar />
       <AllRoutes />
-      {/* <SignUp /> */}
+      <Footer />
     </Box>
   );
 }

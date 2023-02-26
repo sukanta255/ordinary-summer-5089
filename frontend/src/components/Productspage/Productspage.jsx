@@ -10,7 +10,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Heading,
   RangeSlider,
   RangeSliderFilledTrack,
   RangeSliderThumb,
@@ -53,9 +52,9 @@ const Productspage = () => {
       badgeType: "MixMatch",
       productType: "Product",
       colourWayId: "203957882",
-      isSale: true,
+      isSale: false,
       reducedPrice: "39.40",
-      hasMultiplePrices: true,
+      hasMultiplePrices: false,
       isOutlet: true,
       isSellingFast: true,
       colour: "blue",
@@ -77,7 +76,7 @@ const Productspage = () => {
       reducedPrice: "39.40",
       hasMultiplePrices: true,
       isOutlet: true,
-      isSellingFast: true,
+      isSellingFast: false,
       colour: "lightgreen",
       categoryName: "New in",
       mainCategory: "New in",
@@ -90,14 +89,14 @@ const Productspage = () => {
       price: "45.95",
       description: "Pull&Bear roll neck jumper in black",
       image: "https://images.asos-media.com/products/pullbear-roll-neck-jumper-in-black/203957880-1-black",
-      badgeType: "MixMatch",
+      badgeType: "",
       productType: "Product",
       colourWayId: "203957882",
       isSale: true,
       reducedPrice: "39.40",
       hasMultiplePrices: true,
       isOutlet: true,
-      isSellingFast: true,
+      isSellingFast: false,
       colour: "lightblue",
       categoryName: "New in",
       mainCategory: "New in",
@@ -113,7 +112,12 @@ const Productspage = () => {
   const [maxVal, setMaxVal] = useState(2800);
   return (
     <Flex w={"100%"} direction={"column"}>
-      <Heading>product v Page</Heading>
+      
+      <Flex w={"100%"} my={"8"} justifyContent={"center"}>
+        <Text as={"b"} fontSize={{base:"4xl",sm:"5xl"}}>
+          MEN NEW IN
+        </Text>
+      </Flex>
 
       <Flex px={"8"} gap={"2"} justifyContent={"flex-Start"} w={"100%"}>
         <Button fontSize={"sm"} bgColor={"white"} _hover={{ bgColor: "white" }} gap={"2"} onClick={onOpen}>

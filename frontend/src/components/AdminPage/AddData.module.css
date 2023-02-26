@@ -1,0 +1,46 @@
+
+
+
+.container{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    background-color:plum;
+    align-items: center;
+    justify-content: space-evenly;
+    border:2px solid green;
+
+}
+.container input{
+    /* margin-top: 10px; */
+    justify-content: space-between;
+    padding: 4px;
+    width: 40%;
+    margin: auto;
+    margin-top: 1%;
+    background-color: teal;
+}
+.container button{
+    width: 30%;
+    margin: auto;
+    color:white;
+    background-color: #181535;
+    margin-top: 1%;
+    border-radius: 5%;
+    padding: 1%;
+}
+.radiobtn{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    color: #f33d67;
+    background-color:blue;
+    width: 40%;
+    padding: 4px;
+    margin-top: 1%;
+   /* flex: 1; */
+    justify-content:flex-end;
+}
+.radiobtn>input .radiobtn>label{
+    flex:1;
+}

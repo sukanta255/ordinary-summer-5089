@@ -2,9 +2,30 @@ import { Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
 
 const ProductCard = ({ el }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+
+  const over = (e) => {
+    setIsVisible(true);
+  };
+  const out = (e) => {
+    setIsVisible(false);
+  };
   return (
     <Flex direction={"column"}>
-      <Image src={el.image} alt={"Broken Data"} />
+      <Flex position={"relative"} onMouseOver={over} onMouseOut={out}>
+          <Image src={el.image} w={"100%"} alt={"Broken Data"}  />
+          <IconButton transition={"1000ms"}
+            display={isVisible ? "flex" : "none"}
+            icon={<BsStar />}
+            borderRadius={"50%"}
+            position={"absolute"}
+            bgColor={"white"}
+            _hover={{ color: "white", bgColor: "black" }}
+            top={"10px"}
+            left={"10px"}
+          />
+      </Flex>
       <Flex justifyContent={"space-between"} mt={"4"}>
         <Text fontSize={"sm"} color={"grey"}>
           {el.brandName}
@@ -21,11 +42,16 @@ const ProductCard = ({ el }) => {
             </Text>
           ) : null}
           {el.badgeType ? (
-            <Text px={"3"} bgColor={"red"} color={"white"} fontSize={"sm"}>
+            <Text borderRadius={"10"} px={"3"} bgColor={"red"} color={"white"} fontSize={"sm"}>
               Hot
             </Text>
           ) : null}
         </Flex>
+      </Flex>
+      <Flex justifyContent={"space-between"} mt={"4"}>
+        <Text fontSize={"sm"} color={"grey"}>
+          {el.brandName}
+        </Text>
       </Flex>
       <Text noOfLines={1} as={"b"}>
         {el.description}
