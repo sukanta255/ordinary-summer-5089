@@ -11,9 +11,9 @@ const AddDataSchema=mongoose.Schema({
     hasMultiplePrices:Boolean,
     isOutlet:Boolean,
     isSellingFast:Boolean,
-    color:String,
+    colour:String,
     categoryName:String,
-    mainCatagory:String,
+    mainCategory:String,
     brandName:String,
     productRating:Number,
     productDescription:String
