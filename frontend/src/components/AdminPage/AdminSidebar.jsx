@@ -62,7 +62,7 @@ export default function AdminSidebar({ children }) {
         onOverlayClick={onClose}
         size="full">
         <DrawerContent>
-          <SidebarContent onClose={onClose} />
+          {/* <SidebarContent onClose={onClose} /> */}
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}

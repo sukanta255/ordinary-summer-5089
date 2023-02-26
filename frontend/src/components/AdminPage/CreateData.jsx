@@ -1,22 +1,25 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
+import AddData from './AddData'
 import AdminSidebar from './AdminSidebar'
-import PieChart from './PieChart'
+import { SidebarContent } from './SidebarContent'
 
-const AdminDashboard = () => {
+const CreateData = () => {
   return (
     <div>
-    
-    <Box display={"flex"}>
+     <Box display={"flex"}>
         <Box w={"20%"}>
             <AdminSidebar/>
         </Box>
-        {/* <Box w={"100%"}> <PieChart/></Box> */}
+        <Box w={"100%"}> <AddData/></Box>
      </Box>
-    
-
     </div>
   )
 }
 
-export default AdminDashboard
+export default CreateData
+
+
+
+
+
