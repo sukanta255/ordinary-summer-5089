@@ -1,5 +1,6 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import { Flex, IconButton, Image, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { BsStar } from "react-icons/bs";
 
 const ProductCard = ({ el }) => {
   const [isVisible, setIsVisible] = useState(false);

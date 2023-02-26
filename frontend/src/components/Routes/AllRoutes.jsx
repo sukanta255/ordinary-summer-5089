@@ -12,7 +12,8 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import CreateData from "../AdminPage/CreateData";
 import PieChart from "../AdminPage/PieChart";
 import Login from "../../Pages/Login";
-import SignUp from "../../Pages/Signup";
+// import SignUp from "../../Pages/Signup";
+import SignUp from "../../Pages/SignUp";
 
 
 
@@ -27,7 +28,7 @@ const AllRoutes = () => {
         <Route path="/emptycart" element={<EmptyCart />} />
         <Route path="/adddata" element={<CreateData />} />
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/updatedata" element={<UpdateData />} />
         <Route path="/chart" element={<PieChart />} />

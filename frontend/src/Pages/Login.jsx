@@ -36,7 +36,7 @@ export default function Login() {
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'}>Login to your account</Heading>
                     <Text fontSize={'lg'} color={'gray.600'}>
-                        Create New Account <Link href='/signup' color={'blue.400'}>Register Here</Link>
+                        Create New Account <Link href='/register' color={'blue.400'}>Register Here</Link>
                     </Text>
                 </Stack>
                 <form onSubmit={(e) => handleLogin(e, user)}>
