@@ -41,7 +41,7 @@ const AddData = () => {
       quantity:1
     }
     console.log(payload)
-    fetch("http://localhost:4100/adddata/create",{
+    fetch("https://enchanting-gold-tie.cyclic.app/adddata/create",{
       method:"POST",
       body:JSON.stringify(payload),
       headers:{
@@ -59,6 +59,7 @@ const AddData = () => {
         
       
        <div className={styles.container}>
+        <h1 style={{fontSize:"35px",color:"black",fontWeight:"30px"}}>Add Data Page</h1>
         <input type="number" value={price}  placeholder='Price' onChange={(e)=>setPrice(e.target.value)}/>
         <input type="text" value={description}  placeholder='Description' onChange={(e)=>setDiscription(e.target.value)}/>
         <input type="text" value={image}  placeholder='Image' onChange={(e)=>setImage(e.target.value)}/>
