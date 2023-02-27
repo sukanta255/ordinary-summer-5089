@@ -40,6 +40,8 @@ Skinstore webiste looks very amazing and introduced with various type of languag
  <ol dir="auto">admin email - admin@kapdelo.com</ol>
  <ol dir="auto">password - abcd</ol>
  
+ ![Screenshot (342)](https://user-images.githubusercontent.com/107980582/221503010-916d549c-214f-44dd-8d47-e548a328053f.png)
+
  </ul>
 
 This report is provided by the Github language used stats. So, this is the total percentage of the coding languages. Now we explain our project in details.
