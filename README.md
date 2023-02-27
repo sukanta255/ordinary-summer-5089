@@ -50,27 +50,32 @@ This report is provided by the Github language used stats. So, this is the total
 
 Homepage is one of the most important factor which also known by the name of Landing Page. There are different kinds of the Products and populer services are mentioned here. Take a look on it.
 
-![Screenshot (332)](https://user-images.githubusercontent.com/107980582/221491919-b12050f3-3086-43fa-a6ee-1672b89d410d.png)
+
+![Screenshot (337)](https://user-images.githubusercontent.com/107980582/221499524-d1037907-1c3b-4a00-9ac4-f843eedd9784.png)
 
 ### Navbar
 
 Navigation Bar is the topmost layer or bar of our website. In this bar, you find the various types of the menus like Men,Women,Brands, Search,Wishlist, Login, Register, Add to Cart Page etc.
 
 
-![Screenshot (333)](https://user-images.githubusercontent.com/107980582/221492064-d42d6459-14bc-4091-bda2-e03099b8ee7b.png)
+![Screenshot (338)](https://user-images.githubusercontent.com/107980582/221499758-60e94758-12db-470b-af95-5185ac2ba6f0.png)
 
-![Screenshot (334)](https://user-images.githubusercontent.com/107980582/221492074-33d9a862-9d4b-45d8-bbc1-7b6a48b96d23.png)
+
+
+![Screenshot (339)](https://user-images.githubusercontent.com/107980582/221499899-a74ae265-8bc7-4b41-a1da-001843857483.png)
 
 It is a cart Page where you find the different kinds of the products which products you added in your cart. Take a look on that.
-![Screenshot (336)](https://user-images.githubusercontent.com/107980582/221493263-547bf278-9b9f-4f85-b112-3d75bec46be3.png)
+
+![Screenshot (340)](https://user-images.githubusercontent.com/107980582/221500147-56b1bcf1-c8f0-44e5-9da7-f5ba7a095f29.png)
 
 
 ## Footer
 
 As you know that every website have the header and footer. Also in this this website, we have a pritty footer which helps you to move the different kinds of the important pages.
 
-![Screenshot (335)](https://user-images.githubusercontent.com/107980582/221492220-8b0379a0-927a-40c9-8627-9004892c7fca.png)
 
+
+![Screenshot (336)](https://user-images.githubusercontent.com/107980582/221500339-d967f1fb-9614-4aa6-8b10-9a275fc95287.png)
 
 So, this is the footer of our website clone. All the things in quite easy to use as well as mobile, teblet and desktop. We hope you like these things.
 
