@@ -7,8 +7,12 @@ import SingleProductPage from "../Productspage/SingleProductPage";
 import CartItem from "../cartPage/CartItem";
 import EmptyCart from "../cartPage/EmptyCart";
 import AddData from "../AdminPage/AddData";
+import AdminDashboard from "../AdminPage/AdminDashboard";
+import UpdateData from "../AdminPage/UpdateData";
+import { CheckCircleIcon } from "@chakra-ui/icons";
+import CreateData from "../AdminPage/CreateData";
+import PieChart from "../AdminPage/PieChart";
 import PaymentPage from "../PaymentPage/PaymentPage";
-
 
 const AllRoutes = () => {
   return (
@@ -20,7 +24,13 @@ const AllRoutes = () => {
         <Route path="/cartpage" element={<CartItem />} />
         <Route path="/emptycart" element={<EmptyCart />} />
         <Route path="/admin" element={<AddData/>} />
+        <Route path="/adddata" element={<CreateData/>} />
+        <Route path="/admin" element={<AdminDashboard/>} />
+
+        <Route path="/updatedata" element={<UpdateData/>} />
+        <Route path="/chart" element={<PieChart/>} />
         <Route path="/payment" element={<PaymentPage/>}/>
+
       </Routes>
     </div>
   );
