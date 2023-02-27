@@ -1,0 +1,12 @@
+.left{
+    width: 50%;
+    height: 100px;
+     margin: auto;
+     /* background-color: #c22d2d; */
+    align-items: center;
+    justify-content: center;
+}
+.count{
+    font-size: 80px;
+    background-color: #87a176;
+}

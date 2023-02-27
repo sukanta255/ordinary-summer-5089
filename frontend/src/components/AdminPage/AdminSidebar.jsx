@@ -33,7 +33,7 @@ import { SidebarContent } from './SidebarContent';
 //   icon: IconType;
 // }
  export const LinkItems = [
-  { name: 'Dashboard', icon: FiHome ,link:"/dashboard"},
+  { name: 'Dashboard', icon: FiHome ,link:"/admin"},
   { name: 'Add Data', icon: FiTrendingUp,link:"/adddata" },
   { name: 'Users Data', icon: FiCompass,link:"/usersdata" },
   { name: 'Update Data', icon: FiStar ,link:"/updatedata"},

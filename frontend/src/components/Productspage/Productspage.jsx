@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -10,115 +10,77 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
+  Image,
   RangeSlider,
   RangeSliderFilledTrack,
   RangeSliderThumb,
   RangeSliderTrack,
   SimpleGrid,
+  Spinner,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
 
 import { FaAngleDown, FaStar } from "react-icons/fa";
+import { getData, getFullData } from "../../API/ProductRequests";
+import PaginationComp from "./PaginationComp";
+import { useNavigate } from "react-router-dom";
 
 const Productspage = () => {
-  const data = [
-    {
-      id: "203957880",
-      price: "45.95",
-      description: "Pull&Bear roll neck jumper in black",
-      image: "https://images.asos-media.com/products/pullbear-roll-neck-jumper-in-black/203957880-1-black",
-      badgeType: "MixMatch",
-      productType: "Product",
-      colourWayId: "203957882",
-      isSale: true,
-      reducedPrice: "39.40",
-      hasMultiplePrices: true,
-      isOutlet: true,
-      isSellingFast: true,
-      colour: "red",
-      categoryName: "New in",
-      mainCategory: "New in",
-      brandName: "Pullbear",
-      productRating: "3",
-      productDescription: "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit",
-    },
-    {
-      id: "203957880",
-      price: "45.95",
-      description: "Pull&Bear roll neck jumper in black",
-      image: "https://images.asos-media.com/products/pullbear-roll-neck-jumper-in-black/203957880-1-black",
-      badgeType: "MixMatch",
-      productType: "Product",
-      colourWayId: "203957882",
-      isSale: false,
-      reducedPrice: "39.40",
-      hasMultiplePrices: false,
-      isOutlet: true,
-      isSellingFast: true,
-      colour: "blue",
-      categoryName: "New in",
-      mainCategory: "New in",
-      brandName: "Pullbear",
-      productRating: "3",
-      productDescription: "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit",
-    },
-    {
-      id: "203957880",
-      price: "45.95",
-      description: "Pull&Bear roll neck jumper in black",
-      image: "https://images.asos-media.com/products/pullbear-roll-neck-jumper-in-black/203957880-1-black",
-      badgeType: "MixMatch",
-      productType: "Product",
-      colourWayId: "203957882",
-      isSale: true,
-      reducedPrice: "39.40",
-      hasMultiplePrices: true,
-      isOutlet: true,
-      isSellingFast: false,
-      colour: "lightgreen",
-      categoryName: "New in",
-      mainCategory: "New in",
-      brandName: "Pullbear",
-      productRating: "3",
-      productDescription: "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit",
-    },
-    {
-      id: "203957880",
-      price: "45.95",
-      description: "Pull&Bear roll neck jumper in black",
-      image: "https://images.asos-media.com/products/pullbear-roll-neck-jumper-in-black/203957880-1-black",
-      badgeType: "",
-      productType: "Product",
-      colourWayId: "203957882",
-      isSale: true,
-      reducedPrice: "39.40",
-      hasMultiplePrices: true,
-      isOutlet: true,
-      isSellingFast: false,
-      colour: "lightblue",
-      categoryName: "New in",
-      mainCategory: "New in",
-      brandName: "Pullbear",
-      productRating: "3",
-      productDescription: "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit",
-    },
-  ];
+  const myNav = useNavigate();
+  const [minVal, setMinVal] = useState(250);
+  const [maxVal, setMaxVal] = useState(2500);
+
+  //redux actions
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [count, setCount] = useState(0);
+  const [error, setError] = useState(false);
+
+  //paginate
+  const [Page, setPage] = useState(1);
+
+  const HandleSingleProduct = (id) => {
+    myNav(`/products/${id}`);
+  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const [minVal, setMinVal] = useState(250);
-  const [maxVal, setMaxVal] = useState(2800);
-  return (
+
+  const getProductsData = async () => {
+    setLoading(true);
+    try {
+      const res = await getFullData(`?mainCategory=New%20in&page=${Page}&limit=25`);
+      setLoading(false);
+      setData(res.data[0]);
+      setCount(res.data[1]);
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+      console.log("error: ", error);
+    }
+  };
+  useEffect(() => {
+    getProductsData();
+  }, [Page]);
+
+  return loading ? (
+    <Flex justifyContent={"center"} h={"600px"} w={"100%"}>
+      <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="black.500" size="xl" />
+    </Flex>
+  ) : error ? (
+    <Flex direction={"column"} w={"100%"} h={"600px"} justifyContent={"center"} alignItems={"center"}>
+      <Image w={"400px"} src="https://user-images.githubusercontent.com/112304655/218245639-36aca8c4-66d4-4350-81f0-119fb68f7ca7.gif" />
+    </Flex>
+  ) : (
     <Flex w={"100%"} direction={"column"}>
       
       <Flex w={"100%"} my={"8"} justifyContent={"center"}>
-        <Text as={"b"} fontSize={{base:"4xl",sm:"5xl"}}>
+        <Text as={"b"} fontSize={{ base: "4xl", sm: "5xl" }}>
           MEN NEW IN
         </Text>
       </Flex>
-
       <Flex px={"8"} gap={"2"} justifyContent={"flex-Start"} w={"100%"}>
         <Button fontSize={"sm"} bgColor={"white"} _hover={{ bgColor: "white" }} gap={"2"} onClick={onOpen}>
           Filter <FaAngleDown />
@@ -161,11 +123,17 @@ const Productspage = () => {
           <DrawerFooter></DrawerFooter>
         </DrawerContent>
       </Drawer>
+      <Flex px={"8"} w={"100%"} justifyContent={"flex-end"}>
+        <PaginationComp page={Page} setPage={setPage} count={count} />
+      </Flex>
       <SimpleGrid m={"8"} columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }} spacing={"8"}>
-        {data.map((el) => (
-          <ProductCard el={el} />
+        {data.map((el, id) => (
+          <ProductCard key={id} el={el} HandleSingleProduct={HandleSingleProduct} />
         ))}
       </SimpleGrid>
+      <Flex px={"8"} w={"100%"} justifyContent={"flex-end"}>
+        <PaginationComp page={Page} setPage={setPage} count={count} />
+      </Flex>
     </Flex>
   );
 };

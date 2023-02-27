@@ -15,7 +15,7 @@ const AddData = () => {
   const [hasMultiplePrices,setHasMultiplePrice]=useState("")
   const [isOutlet,setIsOutlet]=useState("")
   const [isSellingFast,setIsSellingFast]=useState("")
-  const [color,setColor]=useState("")
+  const [colour,setColour]=useState("")
   const [categoryName,setCategoryName]=useState("")
   const [mainCategory,setMainCategory]=useState("")
   const [brandName,setBrandName]=useState("")
@@ -33,25 +33,27 @@ const AddData = () => {
       hasMultiplePrices,
       isOutlet,
       isSellingFast,
-      color,
+      colour,
       mainCategory,
       brandName,
       productRating,
       productDescription,
       quantity:1
     }
+
+    //https://enchanting-gold-tie.cyclic.app
     console.log(payload)
-    fetch("https://enchanting-gold-tie.cyclic.app/adddata/create",{
+    fetch("http://localhost:4100/adddata/create",{
       method:"POST",
       body:JSON.stringify(payload),
       headers:{
         "Content-type":"application/json",
-        "Authorization":localStorage.getItem("token")
+        "Authorization":localStorage.getItem("authToken")
       }
     }).then(res=>res.json())
     .then(res=>console.log(res))
     .catch(err=>console.log(err))
-   }
+    }
 
 
   return (
@@ -65,7 +67,7 @@ const AddData = () => {
         <input type="text" value={image}  placeholder='Image' onChange={(e)=>setImage(e.target.value)}/>
         <input type="text" value={badgeType}  placeholder='badgeType' onChange={(e)=>setBadgeType(e.target.value)}/>
         <div className={styles.radiobtn}>
-        Ismale:
+        <p style={{marginRight:"40%"}}>Ismale:</p>
         <label for="genderT">True</label>
         <input type="radio" id='genderT' value={true} name="gender" onChange={(e)=>setIsmale(e.target.value)} />
         <label for="genderF">False</label>
@@ -74,7 +76,7 @@ const AddData = () => {
        
         <input  type="text" value={reducePrice}  placeholder='reducePrice' onChange={(e)=>setReducedPrice(e.target.value)}/>
         <div className={styles.radiobtn} >
-        hasMultiplePrices:
+        <p style={{marginRight:"20%"}}> hasMultiplePrices:</p>
         <label for="hasMultiplePricesT">True</label>
         <input type="radio" id='hasMultiplePricesT' name='hasMultiplePrices' value={true} onChange={(e)=>setHasMultiplePrice(e.target.value)}/>
         <label for="hasMultiplePricesF">False</label>
@@ -83,21 +85,21 @@ const AddData = () => {
         </div>
 
         <div className={styles.radiobtn} >
-        IsOutlet:
+        <p style={{marginRight:"40%"}}>IsOutlet:</p>
         <label for="isoutletT">True</label>
         <input type="radio" value={true} id="isoutletT" name="isoutlet" onChange={(e)=>setIsOutlet(e.target.value)}  />
         <label for="isoutletF">False</label>
         <input type="radio"  value={false} id="isoutletF" name="isoutlet" onChange={(e)=>setIsOutlet(e.target.value)} />
         </div>
         <div className={styles.radiobtn}>
-          IsSellimgFast
+        <p style={{marginRight:"40%"}}>  IsSellimgFast</p>
         <label for="isSellingFastT">True</label>
         <input type="radio" id="isSellingFastT" value={true} name="isSellingFast"  onChange={(e)=>setIsSellingFast(e.target.value)}/>
         <label for="isSellingFastF">False</label>
         <input type="radio" id="isSellingFastF" value={false} name="isSellingFast" onChange={(e)=>setIsSellingFast(e.target.value)}/>
 
         </div>
-        <input type="text" value={color}  placeholder='Color' onChange={(e)=>setColor(e.target.value)}/>
+        <input type="text" value={colour}  placeholder='Colour' onChange={(e)=>setColour(e.target.value)}/>
         <input type="text" value={categoryName}  placeholder='categoryName' onChange={(e)=>setCategoryName(e.target.value)}/>
         <input type="text" value={mainCategory}  placeholder='mainCategory' onChange={(e)=>setMainCategory(e.target.value)}/>
         <input type="text" value={brandName}  placeholder='brandName' onChange={(e)=>setBrandName(e.target.value)}/>

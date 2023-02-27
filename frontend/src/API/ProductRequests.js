@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseURL = `https://enchanting-gold-tie.cyclic.app/`;
+const BaseURL = `https://enchanting-gold-tie.cyclic.app/products`;
 
 export const getFullData = async (url) => {
   try {
@@ -10,9 +10,10 @@ export const getFullData = async (url) => {
   }
 };
 
-export const getData = async (url) => {
+export const getData = async (query) => {
   try {
-    return await axios.get(`${BaseURL}${url}`);
+    const res = await axios.get(`${BaseURL}${query}`);
+    return res.data;
   } catch (err) {
     console.log("err: ", err);
   }

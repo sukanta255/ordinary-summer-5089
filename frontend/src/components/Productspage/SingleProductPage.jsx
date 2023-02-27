@@ -1,17 +1,59 @@
-import { Divider, Flex, FormControl, Heading, Hide, HStack, IconButton, Image, Input, Show, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useRadioGroup } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  FormControl,
+  Heading,
+  Hide,
+  HStack,
+  IconButton,
+  Image,
+  Input,
+  Show,
+  Spinner,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  useRadioGroup,
+  useToast,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BsFillEyeFill, BsPlus, BsStar } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import SizeBar from "./SizeBar";
 import { useForm } from "react-hook-form";
-import { getData, postData } from "../../API/requests";
+import { getFullData } from "../../API/ProductRequests";
 
 const SingleProductPage = () => {
-  const { _id } = useParams();
+  const toast = useToast();
+
+  //redux actions
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({});
+  const [error, setError] = useState(false);
+
+  const myData = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  const { id } = useParams();
+
+  const getProductsData = async () => {
+    setLoading(true);
+    try {
+      const res = await getFullData(`?_id=${id}`);
+      setLoading(false);
+      setData(res.data[0][0]);
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+      console.log("error: ", error);
+    }
+  };
   useEffect(() => {
-    //get request on start
-    // getData("")
+    getProductsData();
   }, []);
 
   const [randomViewer, SetRandomViewer] = useState(23);
@@ -25,31 +67,19 @@ const SingleProductPage = () => {
     return () => clearInterval(viewerID);
   }, []);
 
-  // Make a request using ID and get object
-  const data = {
-    id: "203957880",
-    price: "45.95",
-    description: "Pull&Bear roll neck jumper in black",
-    image: "https://images.asos-media.com/products/pullbear-roll-neck-jumper-in-black/203957880-1-black",
-    badgeType: "MixMatch",
-    productType: "Product",
-    colourWayId: "203957882",
-    isSale: true,
-    reducedPrice: "39.40",
-    hasMultiplePrices: true,
-    isOutlet: true,
-    isSellingFast: true,
-    colour: "red",
-    categoryName: "New in",
-    mainCategory: "New in",
-    brandName: "Pullbear",
-    productRating: "3",
-    productDescription: "Jumpers & Cardigans by Pull&BearThe soft stuffPlain designRoll-neckLong sleevesRegular fit",
-  };
-
   //Queantity
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data); //postData("",data);
+  const onSubmit = (e) => {
+    localStorage.setItem("cartItems", JSON.stringify([...myData, data]));
+    toast({
+      position: "bottom-left",
+      render: () => (
+        <Box color="white" p={3} bg="blackAlpha.900">
+          Item Added Into Cart
+        </Box>
+      ),
+    });
+  }; 
 
   /* Cloth Sizes Can be Picked by the console.log */
   const options = ["S", "M", "L", "XL"];
@@ -60,8 +90,16 @@ const SingleProductPage = () => {
   });
   const group = getRootProps();
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+  return loading ? (
+    <Flex justifyContent={"center"} h={"600px"} w={"100%"}>
+      <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="black.500" size="xl" />
+    </Flex>
+  ) : error ? (
+    <Flex direction={"column"} w={"100%"} h={"600px"} justifyContent={"center"} alignItems={"center"}>
+      <Image w={"400px"} src="https://user-images.githubusercontent.com/112304655/218245639-36aca8c4-66d4-4350-81f0-119fb68f7ca7.gif" />
+    </Flex>
+  ) : (
+    <form onSubmit={onSubmit}>
       <Flex direction={"column"} w={"100%"}>
         <Heading>SingleProductPage</Heading>
         {/* Main Box */}
@@ -154,13 +192,7 @@ const SingleProductPage = () => {
                 Quantity
               </Text>
               <Flex justifyContent={"flex-start"}>
-                <IconButton
-                
-                  transition={"550ms"}
-                  icon={<BsPlus style={{ fontSize: "24px" }} />}
-                  bgColor={"white"}
-                  _hover={{ color: "white", bgColor: "black" }}
-                />
+                <IconButton transition={"550ms"} icon={<BsPlus style={{ fontSize: "24px" }} />} bgColor={"white"} _hover={{ color: "white", bgColor: "black" }} />
                 <FormControl>
                   <Input w={"12"} h={"10"} {...register("firstName", { min: 1, max: 15 })} />
                 </FormControl>

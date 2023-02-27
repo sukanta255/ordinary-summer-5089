@@ -4,10 +4,12 @@ import {
     GET_CART_PRODUCTS,
     RESET_CART,
   } from "./cart.action.type";
-  
-  let initialState = {
-    products: JSON.parse(localStorage.getItem("cartItems")) || [],
-  };
+  const initialState={
+    products:JSON.parse(localStorage.getItem("cartItems")) || [],
+    isLoading:false,
+    isError:false
+  }
+
   const cartReducer = (state = initialState, { type, payload }) => {
     switch (type) {
       case ADD_TO_CART: {
