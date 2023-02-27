@@ -27,13 +27,13 @@ Skinstore webiste looks very amazing and introduced with various type of languag
  <ol dir="auto">◉ Sort By Category</ol>
  <ol dir="auto">◉ Cart Functionality (like adding an item and removing) </ol>
  <ol dir="auto">◉ Admin Page</ol>
- <ol dir="auto">◉ Admin can add a product product Will be shown on the latest page </ol>
- <ol dir="auto">◉ Login and Sign Up </ol>
+ <ol dir="auto">◉ Admin can add a product product Will be shown on the Product page </ol>
+ <ol dir="auto">◉ Sign Up and Login </ol>
  </ul>
  
  ## Admin account details(Admin Email and Password)
  
- <p>you can add products by admin account and all the users can see the product on latest page(which contain all the latest items)</p>
+ <p>you can add products by admin account and all the users can see the product on Home page(which contain all the latest items)</p>
  
   <ul dir="auto">
  
