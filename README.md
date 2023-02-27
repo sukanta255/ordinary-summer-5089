@@ -3,7 +3,7 @@ Kapdelo is a Ecomerse related website which helps you to find the different kind
 
 ## Deployed Link
 
-Visit : https://frontend-ten-ivory.vercel.app/
+Visit : https://frontend-mohit-6164.vercel.app/
 
 ## Responsive for all screen sizes
 
