@@ -22,7 +22,11 @@ const AllRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/products" element={<Productspage />} />
+        {/* <Route path="/products" element={<Productspage />} /> */}
+        <Route path="/products" element={
+        <Productspage />
+        
+        } />
         <Route path="/products/:id" element={<SingleProductPage />} />
         <Route path="/cartpage" element={<CartItem />} />
         <Route path="/emptycart" element={<EmptyCart />} />
