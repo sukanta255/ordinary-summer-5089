@@ -1,5 +1,5 @@
 ## Project Name - ordinary-summer-5089
-Kapdelo is a skin & beuty related website which helps you to find the different kinds of the products. Kapdelo is part of THG Holdings plc, a globally renowned end-to-end tech platform specializing in taking brands direct to consumers across the globe. Using its proprietary technology and infrastructure, THG Ingenuity, the Group enables brands to grow at scale while driving unrivalled value and continuous performance.
+Kapdelo is a Ecomerse related website which helps you to find the different kinds of the products. Kapdelo is part of THG Holdings plc, a globally renowned end-to-end tech platform specializing in taking brands direct to consumers across the globe. Using its proprietary technology and infrastructure, THG Ingenuity, the Group enables brands to grow at scale while driving unrivalled value and continuous performance.
 
 ## Deployed Link
 
@@ -12,9 +12,10 @@ Visit : https://frontend-ten-ivory.vercel.app/
 Skinstore webiste looks very amazing and introduced with various type of languages like JavaScript, HTML, CSS etc. There are the some important details regarding with this project which is mentioned below:
 
 <ul dir="auto">
- <ol dir="auto">◉ JavaScript : 65.1%</ol>
- <ol dir="auto">◉ HTML : 20.9%</ol>
- <ol dir="auto">◉ CSS : 10.0%</ol>
+ <ol dir="auto">◉ JavaScript : 91.2%</ol>
+ <ol dir="auto">◉ HTML : 1.2%</ol>
+ <ol dir="auto">◉ CSS : 7.4%</ol>
+ <ol dir="auto">◉ Shell : 0.2%</ol>
  </ul>
  
  ## Functionalities
@@ -53,7 +54,7 @@ Homepage is one of the most important factor which also known by the name of Lan
 
 ### Navbar
 
-Navigation Bar is the topmost layer or bar of our website. In this bar, you find the various types of the menus like Brands, Sale, Makeup, HairCare, Login, Register, Add to Cart Page etc.
+Navigation Bar is the topmost layer or bar of our website. In this bar, you find the various types of the menus like Men,Women,Brands, Search,Wishlist, Login, Register, Add to Cart Page etc.
 
 
 ![Screenshot (333)](https://user-images.githubusercontent.com/107980582/221492064-d42d6459-14bc-4091-bda2-e03099b8ee7b.png)
@@ -61,7 +62,8 @@ Navigation Bar is the topmost layer or bar of our website. In this bar, you find
 ![Screenshot (334)](https://user-images.githubusercontent.com/107980582/221492074-33d9a862-9d4b-45d8-bbc1-7b6a48b96d23.png)
 
 It is a cart Page where you find the different kinds of the products which products you added in your cart. Take a look on that.
-![image](https://i.ibb.co/tsmj9hS/Screenshot-295.png)
+![Screenshot (336)](https://user-images.githubusercontent.com/107980582/221493263-547bf278-9b9f-4f85-b112-3d75bec46be3.png)
+
 
 ## Footer
 
@@ -90,3 +92,6 @@ We using different kinds of the technologies to make this website. These things 
 - [x] ABHISEK KUMAR - [GitHub Profile](https://github.com/Abhisek753)
 - [x] Sayyed Sharuk - [GitHub Profile](https://github.com/sayshark75)
 - [x] Satyaranjan Maity - [GitHub Profile](https://github.com/Satyaranjan8414)
+
+
+THANK YOU
