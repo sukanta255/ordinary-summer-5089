@@ -5,13 +5,13 @@ import PieChart from './PieChart'
 
 const AdminDashboard = () => {
   return (
-    <div>
+    <div style={{maxWidth:"100%"}}>
     
     <Box display={"flex"}>
-        <Box w={"20%"}>
+        <div>
             <AdminSidebar/>
-        </Box>
-        <Box w={"100%"}> <PieChart/></Box>
+        </div>
+        <div> <PieChart/></div>
      </Box>
     
 

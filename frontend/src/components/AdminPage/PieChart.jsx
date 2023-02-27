@@ -1,5 +1,5 @@
 import Chart from 'react-apexcharts'
-
+import styles from "./PieChart.module.css"
 import React, { useEffect,useState } from 'react'
 import axios from 'axios';
 // import { getData } from '../../API/requests';
@@ -8,20 +8,27 @@ import axios from 'axios';
 // http://localhost:4100/adddata
 
 const PieChart = () => {
+  const [data,setData]=useState([]);
+const [length,setLength]=useState("")
 
      const getData = async () => {
         try {
-          return await axios.get("https://enchanting-gold-tie.cyclic.app/adddata");
+          return await axios.get("https://enchanting-gold-tie.cyclic.app/adddata",{
+            headers:{
+              Authorization:localStorage.getItem("authToken")
+            }
+          });
         } catch (err) {
           console.log("err: ", err);
         }
       };
-    const [data,setData] = useState([]);
+  
 
     const fetchAndUpdatdata= async()=>{
      let value=await getData()
      setData(value)
-    
+     console.log(value)
+     setLength(value.data.length)
     }
     
 
@@ -29,11 +36,14 @@ const PieChart = () => {
        fetchAndUpdatdata();
        
     },[]);
-    console.log(data)
+    console.log(length)
 
   return (
-    <div>
-        <h1>hii</h1>
+    <div style={{direction:"flex",flexDirection:"column"}}>
+        <div className={styles.left}>
+           <h1 className={styles.count}>{`Total Count:${length}`}</h1>
+        </div>
+        <div>
         <Chart
         
         type="pie"
@@ -54,7 +64,7 @@ const PieChart = () => {
         >
         </Chart>
 
-        
+        </div>
      {/* <Doughnut data={data} /> */}
     </div>
   )
