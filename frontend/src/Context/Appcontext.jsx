@@ -34,7 +34,7 @@ const AppcontextProvider = ({ children }) => {
                         if (data.msg === "Login success") {
                             localStorage.setItem("authToken", data.token)
                             toast({
-                                description: "Admin Login Success",
+                                description: "Admin Login Successfully",
                                 status: 'success',
                                 duration: 2000,
                                 isClosable: true,
@@ -80,7 +80,7 @@ const AppcontextProvider = ({ children }) => {
                         if (data.msg === "Login success") {
                             localStorage.setItem("authToken", data.token)
                             toast({
-                                description: "Login Success",
+                                description: "Login Successfully",
                                 status: 'success',
                                 duration: 2000,
                                 isClosable: true,

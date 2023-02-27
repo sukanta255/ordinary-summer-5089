@@ -257,7 +257,7 @@ import {
                 </Button>
               </Tooltip>
               <Tooltip hasArrow label="Cart " bg="black" color="white">
-                <Button as={Link} to={"/cart"} backgroundColor={"white"}>
+                <Button as={Link} to={"/cartpage"} backgroundColor={"white"}>
                   <BiShoppingBag size={"20px"} />
                   {/* <p className="cartValue">{cartItems.length}</p> */}
                   <p className="cartValue">0</p>

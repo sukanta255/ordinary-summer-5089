@@ -20,26 +20,33 @@ import { CheckCircleIcon, InfoIcon, SmallCloseIcon } from "@chakra-ui/icons";
 import { BsGiftFill } from "react-icons/bs";
 import { FaCcAmazonPay, FaCcApplePay, FaCcPaypal, FaGooglePay } from "react-icons/fa"
 import { SiPaytm } from "react-icons/si"
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { useSelector } from "react-redux";
-import EmptyCart from "../Optional/EmptyCart";
-import CartItem from "../Optional/CartItem";
+import EmptyCart from "../components/cartPage/EmptyCart";
+import CartItem from "../components/cartPage/CartItem";
 import { Link } from "react-router-dom"
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cartManager.products);
+  const cartItems = useSelector((state) => {
+  console.log(state) 
+
+  
+  return state.cartManager.products});
+
   let cartTotal = cartItems.reduce((acc, p) => {
     return acc + Number(p.price);
   }, 0);
 
+
+
   return <>{
-    cartItems.length == 0 ? <EmptyCart /> : <Box w={["col", "col", "row"]} mb={8}>
+    cartItems.length === 0 ? <EmptyCart /> : <Box w={["col", "col", "row"]} mb={8}>
       <Box w={["95%", "95%", "80%"]} m="auto">
         <Flex direction={["column", "column", "row"]} mt={["20","20","8"]}>
           <Heading as="h4" fontFamily={"sans-serif"} fontWeight="normal" textAlign={["center","center","auto"]}>
             Your Cart
           </Heading>
           <Spacer />
-          <Link to="/checkout">
+          <Link to="/payment">
             <Button
               mt={["8", "8", "0"]}
               bgColor="blackAlpha.800"
@@ -74,6 +81,58 @@ const Cart = () => {
             <Box>
               {cartItems.map((c) => <CartItem {...c} />)}
             </Box>
+
+{/* 
+            badgeType
+: 
+""
+brandName
+: 
+"Carhartt-Wip"
+categoryName
+: 
+"New in"
+colour
+: 
+"brown"
+description
+: 
+"Carhartt WIP Flint corduroy backpack in brown"
+hasMultiplePrices
+: 
+false
+image
+: 
+"https://images.asos-media.com/products/carhartt-wip-flint-corduroy-backpack-in-brown/203402998-1-brown"
+isMale
+: 
+false
+isOutlet
+: 
+false
+isSellingFast
+: 
+false
+mainCategory
+: 
+"New in"
+price
+: 
+189
+productDescription
+: 
+"Accessories by Carhartt WIPComplete your carry-all line-upTop handleAdjustable, shoulder strapsExternal pocketZip fasteningExternal zip pocket"
+productRating
+: 
+null
+quantity
+: 
+1
+reducedPrice
+: 
+"" */}
+
+
 
             <Box mt="8">
               <Input
@@ -114,7 +173,7 @@ const Cart = () => {
                 </Link>
                 <Spacer />
                 <Flex direction={["column", "column", "column"]} gap="20px">
-                  <Link to="/checkout">
+                  <Link to="/payment">
                     <Button
                       mt={["8", "8", "0"]}
                       bgColor="blackAlpha.800"
@@ -232,7 +291,7 @@ const Cart = () => {
           </Accordion>
         </Flex>
       </Box>
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   }
   </>
