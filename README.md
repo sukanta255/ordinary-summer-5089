@@ -37,8 +37,8 @@ Skinstore webiste looks very amazing and introduced with various type of languag
  
   <ul dir="auto">
  
- <ol dir="auto">admin email - admin@kapdelo.com</ol>
- <ol dir="auto">password - abcd</ol>
+ <ol dir="auto">admin email :- admin@kapdelo.com</ol>
+ <ol dir="auto">password :- abcd</ol>
  
  ![Screenshot (342)](https://user-images.githubusercontent.com/107980582/221503010-916d549c-214f-44dd-8d47-e548a328053f.png)
 
@@ -101,4 +101,4 @@ We using different kinds of the technologies to make this website. These things 
 - [x] Satyaranjan Maity - [GitHub Profile](https://github.com/Satyaranjan8414)
 
 
-THANK YOU
+THANK YOU 💕
