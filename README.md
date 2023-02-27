@@ -23,7 +23,7 @@ Skinstore webiste looks very amazing and introduced with various type of languag
  <ul dir="auto">
  
  <ol dir="auto">◉ Sort By price </ol>
- <ol dir="auto">◉ Sort By Brand</ol>
+ <ol dir="auto">◉ Sort By Looks</ol>
  <ol dir="auto">◉ Sort By Category</ol>
  <ol dir="auto">◉ Cart Functionality (like adding an item and removing) </ol>
  <ol dir="auto">◉ Admin Page</ol>
