@@ -37,8 +37,8 @@ Skinstore webiste looks very amazing and introduced with various type of languag
  
   <ul dir="auto">
  
- <ol dir="auto">admin email - kapdelo.gmail.com</ol>
- <ol dir="auto">password - admin123</ol>
+ <ol dir="auto">admin email - admin@kapdelo.com</ol>
+ <ol dir="auto">password - abcd</ol>
  
  </ul>
 
