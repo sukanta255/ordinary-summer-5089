@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 import HomePage from "../Homepage/HomePage";
 import Productspage from "../Productspage/Productspage";
 import SingleProductPage from "../Productspage/SingleProductPage";
@@ -12,7 +11,11 @@ import UpdateData from "../AdminPage/UpdateData";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import CreateData from "../AdminPage/CreateData";
 import PieChart from "../AdminPage/PieChart";
+import Login from "../../Pages/Login";
+// import SignUp from "../../Pages/Signup";
+import SignUp from "../../Pages/SignUp";
 import PaymentPage from "../PaymentPage/PaymentPage";
+
 
 const AllRoutes = () => {
   return (
@@ -23,7 +26,6 @@ const AllRoutes = () => {
         <Route path="/products/:id" element={<SingleProductPage />} />
         <Route path="/cartpage" element={<CartItem />} />
         <Route path="/emptycart" element={<EmptyCart />} />
-        <Route path="/admin" element={<AddData/>} />
         <Route path="/adddata" element={<CreateData/>} />
         <Route path="/admin" element={<AdminDashboard/>} />
 

@@ -75,6 +75,7 @@ const Productspage = () => {
     </Flex>
   ) : (
     <Flex w={"100%"} direction={"column"}>
+      
       <Flex w={"100%"} my={"8"} justifyContent={"center"}>
         <Text as={"b"} fontSize={{ base: "4xl", sm: "5xl" }}>
           MEN NEW IN
@@ -96,20 +97,16 @@ const Productspage = () => {
 
           <DrawerBody>
             <Flex justifyContent={"space-evenly"}>
-              <Text>Min: {minVal}</Text>
-              <Text>Max: {maxVal}</Text>
+              <Text>Min :{minVal}</Text>
+              <Text>Max :{maxVal}</Text>
             </Flex>
             <RangeSlider
               // aria-label={["min", "max"]}
               defaultValue={[minVal, maxVal]}
               min={0}
               max={4000}
-              onChangeEnd={(val) => {
-                setMaxVal(val[1]);
-              }}
-              onChangeStart={(val) => {
-                setMinVal(val[0]);
-              }}
+              onChangeEnd={(val) => setMaxVal(val)}
+              onChangeStart={(val) => setMinVal(val)}
             >
               <RangeSliderTrack bg="grey">
                 <RangeSliderFilledTrack bg="black" />

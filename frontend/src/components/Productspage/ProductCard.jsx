@@ -5,6 +5,7 @@ import { BsStar } from "react-icons/bs";
 const ProductCard = ({ el, HandleSingleProduct }) => {
   const [isVisible, setIsVisible] = useState(false);
 
+
   const over = (e) => {
     setIsVisible(true);
   };
@@ -29,16 +30,16 @@ const ProductCard = ({ el, HandleSingleProduct }) => {
         />
         <Flex position={"absolute"} top={"10px"} left={"60%"} direction={"column"} gap={"1"} justifyContent={"center"} alignItems={"flex-end"}>
           {el.isSale ? (
-            <Text borderRadius={"10"} px={"3"} bgColor={"black"} color={"white"} fontSize={"sm"}>
+            <Text px={"3"} bgColor={"black"} color={"white"} fontSize={"sm"}>
               Sale
             </Text>
           ) : null}
           {el.badgeType ? (
-            <Text borderRadius={"10"} px={"3"} bgColor={"grey"} color={"white"} fontSize={"sm"}>
+            <Text px={"3"} bgColor={"grey"} color={"white"} fontSize={"sm"}>
               MisMatch
             </Text>
           ) : null}
-          {el.isSellingFast ? (
+          {el.badgeType ? (
             <Text borderRadius={"10"} px={"3"} bgColor={"red"} color={"white"} fontSize={"sm"}>
               Hot
             </Text>

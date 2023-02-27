@@ -292,7 +292,7 @@ import {
                   </Box>
                 </DrawerBody>
                 <Box display="flex" flexDirection="column" gap="20px" marginLeft="25px">
-                  <a href=""><p className='myaccount123'>My Account</p></a>                    
+                  <a href="/"><p className='myaccount123'>My Account</p></a>                    
                 </Box>
                 <DrawerHeader mt={12} display="flex" flexDirection="column" width="40%">
                   <Button as={Link} to={"/login"} bgColor="black" color="white" colorScheme = "none">Login</Button>

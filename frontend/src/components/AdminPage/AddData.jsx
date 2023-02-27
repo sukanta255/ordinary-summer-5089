@@ -40,18 +40,20 @@ const AddData = () => {
       productDescription,
       quantity:1
     }
+
+    //https://enchanting-gold-tie.cyclic.app
     console.log(payload)
-    fetch("https://enchanting-gold-tie.cyclic.app/adddata/create",{
+    fetch("http://localhost:4100/adddata/create",{
       method:"POST",
       body:JSON.stringify(payload),
       headers:{
         "Content-type":"application/json",
-        "Authorization":localStorage.getItem("token")
+        "Authorization":localStorage.getItem("authToken")
       }
     }).then(res=>res.json())
     .then(res=>console.log(res))
     .catch(err=>console.log(err))
-   }
+    }
 
 
   return (

@@ -48,7 +48,7 @@ const UpdateData = () => {
       body:JSON.stringify(payload),
       headers:{
         "Content-type":"application/json",
-        "Authorization":localStorage.getItem("token")
+        "Authorization":localStorage.getItem("authToken")
       }
     }).then(res=>res.json())
     .then(res=>console.log(res))
