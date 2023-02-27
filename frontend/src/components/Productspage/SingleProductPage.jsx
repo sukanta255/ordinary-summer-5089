@@ -1,4 +1,5 @@
 import {
+  Box,
   Divider,
   Flex,
   FormControl,
@@ -17,6 +18,7 @@ import {
   Tabs,
   Text,
   useRadioGroup,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BsFillEyeFill, BsPlus, BsStar } from "react-icons/bs";
@@ -27,6 +29,8 @@ import { useForm } from "react-hook-form";
 import { getFullData } from "../../API/ProductRequests";
 
 const SingleProductPage = () => {
+  const toast = useToast();
+
   //redux actions
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
@@ -67,6 +71,14 @@ const SingleProductPage = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (e) => {
     localStorage.setItem("cartItems", JSON.stringify([...myData, data]));
+    toast({
+      position: "bottom-left",
+      render: () => (
+        <Box color="white" p={3} bg="blackAlpha.900">
+          Item Added Into Cart
+        </Box>
+      ),
+    });
   }; 
 
   /* Cloth Sizes Can be Picked by the console.log */
@@ -87,7 +99,7 @@ const SingleProductPage = () => {
       <Image w={"400px"} src="https://user-images.githubusercontent.com/112304655/218245639-36aca8c4-66d4-4350-81f0-119fb68f7ca7.gif" />
     </Flex>
   ) : (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={onSubmit}>
       <Flex direction={"column"} w={"100%"}>
         <Heading>SingleProductPage</Heading>
         {/* Main Box */}

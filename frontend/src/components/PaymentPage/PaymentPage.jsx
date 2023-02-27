@@ -4,7 +4,7 @@ import CardDetails from "./CardDetails";
 
 const PaymentPage = () => {
   return (
-    <Flex w={"100%"} direction={"column"}>
+    <Flex w={"100%"} direction={"column"} justifyContent={"center"}>
       <Flex w={"100%"} my={"8"} justifyContent={"center"}>
         <Text as={"b"} fontSize={{ base: "4xl", sm: "5xl" }}>
           Payment

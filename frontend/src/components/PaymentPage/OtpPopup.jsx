@@ -13,7 +13,7 @@ const OtpPopup = ({ otpData, isOpen, onClose }) => {
   const [pin4,setPin4] = useState(0);
 
   const handleSubmit = async () => {
-    let pinNum = otpData;
+    let pinNum = `${otpData}`;
 
     let formPin = `${pin1}${pin2}${pin3}${pin4}`
 
