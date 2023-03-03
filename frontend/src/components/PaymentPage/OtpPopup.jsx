@@ -21,7 +21,7 @@ const OtpPopup = ({ otpData, isOpen, onClose }) => {
 
     if(pinNum===formPin){
       toast({
-        title: "Verified",
+        title: "Ordered Sucessfully",
         description: `${token}`,
         status: "success",
         duration: 3000,

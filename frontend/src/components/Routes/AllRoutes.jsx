@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "../Homepage/HomePage";
 import Productspage from "../Productspage/Productspage";
 import SingleProductPage from "../Productspage/SingleProductPage";
-import CartItem from "../cartPage/CartItem";
 import EmptyCart from "../cartPage/EmptyCart";
 import AddData from "../AdminPage/AddData";
 import AdminDashboard from "../AdminPage/AdminDashboard";
@@ -15,7 +14,12 @@ import Login from "../../Pages/Login";
 // import SignUp from "../../Pages/Signup";
 import SignUp from "../../Pages/SignUp";
 import PaymentPage from "../PaymentPage/PaymentPage";
+
+
+
+import Cart from "../../Pages/Cart";
 import { AllTodos } from "../AdminPage/AdminTodo";
+
 
 
 const AllRoutes = () => {
@@ -29,14 +33,16 @@ const AllRoutes = () => {
         
         } />
         <Route path="/products/:id" element={<SingleProductPage />} />
-        <Route path="/cartpage" element={<CartItem />} />
+        <Route path="/cartpage" element={<Cart />} />
         <Route path="/emptycart" element={<EmptyCart />} />
         <Route path="/adddata" element={<CreateData/>} />
         <Route path="/admin" element={<AdminDashboard/>} />
-         
+
         <Route path="/updatedata" element={<UpdateData/>} />
         <Route path="/chart" element={<PieChart/>} />
         <Route path="/todo" element={<AllTodos/>} />
+         <Route path="/register" element={<SignUp/>} />
+        <Route path="/login" element={<Login/>} />
         
         <Route path="/payment" element={<PaymentPage/>}/>
 
