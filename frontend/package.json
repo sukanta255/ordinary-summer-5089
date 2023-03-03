@@ -29,6 +29,7 @@
     "slick": "^1.12.2",
     "slick-carousel": "^1.8.1",
     "swiper": "^9.0.5",
+    "vercel": "^28.16.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

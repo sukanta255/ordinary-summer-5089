@@ -43,7 +43,7 @@ const AddData = () => {
 
     //https://enchanting-gold-tie.cyclic.app
     console.log(payload)
-    fetch("http://localhost:4100/adddata/create",{
+    fetch("https://enchanting-gold-tie.cyclic.app/adddata/create",{
       method:"POST",
       body:JSON.stringify(payload),
       headers:{

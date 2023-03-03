@@ -15,6 +15,7 @@ import Login from "../../Pages/Login";
 // import SignUp from "../../Pages/Signup";
 import SignUp from "../../Pages/SignUp";
 import PaymentPage from "../PaymentPage/PaymentPage";
+import { AllTodos } from "../AdminPage/AdminTodo";
 
 
 const AllRoutes = () => {
@@ -32,9 +33,11 @@ const AllRoutes = () => {
         <Route path="/emptycart" element={<EmptyCart />} />
         <Route path="/adddata" element={<CreateData/>} />
         <Route path="/admin" element={<AdminDashboard/>} />
-
+         
         <Route path="/updatedata" element={<UpdateData/>} />
         <Route path="/chart" element={<PieChart/>} />
+        <Route path="/todo" element={<AllTodos/>} />
+        
         <Route path="/payment" element={<PaymentPage/>}/>
 
       </Routes>
