@@ -35,7 +35,7 @@ import { SidebarContent } from './SidebarContent';
  export const LinkItems = [
   { name: 'Dashboard', icon: FiHome ,link:"/admin"},
   { name: 'Add Data', icon: FiTrendingUp,link:"/adddata" },
-  { name: 'Users Data', icon: FiCompass,link:"/usersdata" },
+  { name: 'Users Data', icon: FiCompass,link:"/todo" },
   { name: 'Update Data', icon: FiStar ,link:"/updatedata"},
   { name: 'Main Page', icon: FiSettings,link:"/homepage" },
 ];

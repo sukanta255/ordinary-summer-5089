@@ -43,6 +43,7 @@ const AddData = () => {
     }
 
     //https://enchanting-gold-tie.cyclic.app
+
     console.log(payload);
 
     alert("Data Added Successfully");
@@ -53,6 +54,7 @@ const AddData = () => {
       headers: {
         "Content-type": "application/json",
         "Authorization": localStorage.getItem("authToken")
+
       }
     }).then(res => res.json())
       .then(res => console.log(res))
