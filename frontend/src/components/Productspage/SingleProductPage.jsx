@@ -9,6 +9,8 @@ import {
   IconButton,
   Image,
   Input,
+  PinInput,
+  PinInputField,
   Show,
   Spinner,
   Tab,
@@ -35,6 +37,7 @@ const SingleProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
+  const [quantity, setQuantity] = useState("1");
 
   const myData = JSON.parse(localStorage.getItem("cartItems")) || [];
 
@@ -52,6 +55,11 @@ const SingleProductPage = () => {
       console.log("error: ", error);
     }
   };
+
+  const handleQuantity = (val) => {
+    setQuantity((prev) => `${+prev + val}`);
+  };
+
   useEffect(() => {
     getProductsData();
   }, []);
@@ -62,15 +70,27 @@ const SingleProductPage = () => {
   /* --> Difference of 26-18, multiplied to random number, got its floor value, added min value */
   useEffect(() => {
     const viewerID = setInterval(() => {
-      SetRandomViewer((prev) => Math.floor(Math.random() * 8) + 18);
+      SetRandomViewer(Math.floor(Math.random() * 8) + 18);
     }, 13000);
     return () => clearInterval(viewerID);
   }, []);
 
   //Queantity
-  const { register, handleSubmit } = useForm();
+  const { register } = useForm();
   const onSubmit = (e) => {
-    localStorage.setItem("cartItems", JSON.stringify([...myData, data]));
+    e.preventDefault();
+    if (myData.length === 0) {
+      localStorage.setItem("cartItems", JSON.stringify([...myData, { ...data, quantity: +quantity }]));
+    } else {
+      let checkData = myData.map((el, id) => {
+        if (el._id === data._id) {
+          return { ...el, quantity: el.quantity + +quantity };
+        } else {
+          return { ...el, quantity: +quantity };
+        }
+      });
+      localStorage.setItem("cartItems", JSON.stringify(checkData));
+    }
     toast({
       position: "bottom-left",
       render: () => (
@@ -79,7 +99,7 @@ const SingleProductPage = () => {
         </Box>
       ),
     });
-  }; 
+  };
 
   /* Cloth Sizes Can be Picked by the console.log */
   const options = ["S", "M", "L", "XL"];
@@ -192,14 +212,29 @@ const SingleProductPage = () => {
                 Quantity
               </Text>
               <Flex justifyContent={"flex-start"}>
-                <IconButton transition={"550ms"} icon={<BsPlus style={{ fontSize: "24px" }} />} bgColor={"white"} _hover={{ color: "white", bgColor: "black" }} />
+                <IconButton
+                  isDisabled={quantity === "6"}
+                  transition={"550ms"}
+                  icon={<BsPlus style={{ fontSize: "24px" }} />}
+                  bgColor={"white"}
+                  _hover={{ color: "white", bgColor: "black" }}
+                  onClick={() => handleQuantity(+1)}
+                />
                 <FormControl>
-                  <Input w={"12"} h={"10"} {...register("firstName", { min: 1, max: 15 })} />
+                  <PinInput value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+                    <PinInputField {...register("firstName", { min: 1, max: 15 })} />
+                  </PinInput>
                 </FormControl>
-                <IconButton transition={"550ms"} icon={<AiOutlineMinus />} bgColor={"white"} _hover={{ color: "white", bgColor: "black" }} />
+                <IconButton
+                  isDisabled={quantity === "1"}
+                  transition={"550ms"}
+                  icon={<AiOutlineMinus />}
+                  bgColor={"white"}
+                  _hover={{ color: "white", bgColor: "black" }}
+                  onClick={() => handleQuantity(-1)}
+                />
               </Flex>
             </Flex>
-
             {/* Add to Cart Btn */}
             <Input mt={"8"} type={"submit"} value={"Add to Cart"} borderColor={"black"} bgColor={"black"} color={"white"} _hover={{ bgColor: "white", color: "black" }} />
           </Flex>
