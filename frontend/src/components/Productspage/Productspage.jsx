@@ -9,6 +9,13 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  Radio,
+  RadioGroup,
+  AccordionIcon,
   Flex,
   Image,
   RangeSlider,
@@ -19,6 +26,7 @@ import {
   Spinner,
   Text,
   useDisclosure,
+  Stack,
 } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
 
@@ -37,6 +45,8 @@ const Productspage = () => {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
   const [error, setError] = useState(false);
+  const [filterBrand, setFilterBrand] = useState("");
+  const [sortPrice, setSortPrice] = useState("");
 
   //paginate
   const [Page, setPage] = useState(1);
@@ -75,7 +85,6 @@ const Productspage = () => {
     </Flex>
   ) : (
     <Flex w={"100%"} direction={"column"}>
-      
       <Flex w={"100%"} my={"8"} justifyContent={"center"}>
         <Text as={"b"} fontSize={{ base: "4xl", sm: "5xl" }}>
           MEN NEW IN
@@ -118,6 +127,53 @@ const Productspage = () => {
                 <Box color="black" as={FaStar} />
               </RangeSliderThumb>
             </RangeSlider>
+            <Accordion allowMultiple defaultIndex={[0, 1]}>
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      Filter by Brand
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <RadioGroup onChange={setFilterBrand} value={filterBrand}>
+                    <Stack direction="column">
+                      <Radio value="">default</Radio>
+                      <Radio value="Kickers">Kickers</Radio>
+                      <Radio value="Adpt">Adpt</Radio>
+                      <Radio value="Koovs-Design">Koovs-Design</Radio>
+                      <Radio value="Nike">Nike</Radio>
+                      <Radio value="Fred-Perry">Fred-Perry</Radio>
+                      <Radio value="Jack-Jones">Jack-Jones</Radio>
+                      <Radio value="Calvin-Klein">Calvin-Klein</Radio>
+                      <Radio value="Tommy-Hilfiger">Tommy-Hilfiger</Radio>
+                    </Stack>
+                  </RadioGroup>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      Sort by Price
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <RadioGroup onChange={setSortPrice} value={sortPrice}>
+                    <Stack direction="column">
+                      <Radio value="">default</Radio>
+                      <Radio value="-1">High to Low</Radio>
+                      <Radio value="1">Low to High</Radio>
+                    </Stack>
+                  </RadioGroup>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
           </DrawerBody>
 
           <DrawerFooter></DrawerFooter>
