@@ -45,8 +45,8 @@ const Productspage = () => {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
   const [error, setError] = useState(false);
-  const [filterBrand, setFilterBrand] = useState("");
   const [sortPrice, setSortPrice] = useState("");
+  const [filterBrand, setFilterBrand] = useState("");
 
   //paginate
   const [Page, setPage] = useState(1);

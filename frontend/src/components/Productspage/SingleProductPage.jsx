@@ -3,7 +3,6 @@ import {
   Divider,
   Flex,
   FormControl,
-  Heading,
   Hide,
   HStack,
   IconButton,
@@ -22,7 +21,7 @@ import {
   useRadioGroup,
   useToast,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { BsFillEyeFill, BsPlus, BsStar } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useParams } from "react-router-dom";
@@ -38,12 +37,11 @@ const SingleProductPage = () => {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [quantity, setQuantity] = useState("1");
-
-  const myData = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const [localData, setLocalData] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
 
   const { id } = useParams();
 
-  const getProductsData = async () => {
+  const getProductsData = useCallback(async () => {
     setLoading(true);
     try {
       const res = await getFullData(`?_id=${id}`);
@@ -54,15 +52,19 @@ const SingleProductPage = () => {
       setError(true);
       console.log("error: ", error);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    getProductsData();
+  }, [getProductsData]);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(localData));
+  }, [localData]);
 
   const handleQuantity = (val) => {
     setQuantity((prev) => `${+prev + val}`);
   };
-
-  useEffect(() => {
-    getProductsData();
-  }, []);
 
   const [randomViewer, SetRandomViewer] = useState(23);
 
@@ -75,22 +77,12 @@ const SingleProductPage = () => {
     return () => clearInterval(viewerID);
   }, []);
 
-  //Queantity
+  //Quantity
   const { register } = useForm();
+
   const onSubmit = (e) => {
     e.preventDefault();
-    if (myData.length === 0) {
-      localStorage.setItem("cartItems", JSON.stringify([...myData, { ...data, quantity: +quantity }]));
-    } else {
-      let checkData = myData.map((el, id) => {
-        if (el._id === data._id) {
-          return { ...el, quantity: el.quantity + +quantity };
-        } else {
-          return { ...el, quantity: +quantity };
-        }
-      });
-      localStorage.setItem("cartItems", JSON.stringify(checkData));
-    }
+    setLocalData([...localData, { ...data, quantity: +quantity }]);
     toast({
       position: "bottom-left",
       render: () => (
@@ -121,7 +113,6 @@ const SingleProductPage = () => {
   ) : (
     <form onSubmit={onSubmit}>
       <Flex direction={"column"} w={"100%"}>
-        <Heading>SingleProductPage</Heading>
         {/* Main Box */}
         <Flex mx={"12"} mt={"8"} direction={{ base: "column", sm: "column", md: "row" }}>
           {/* Image Box */}
