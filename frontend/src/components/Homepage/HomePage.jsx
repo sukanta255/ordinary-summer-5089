@@ -306,32 +306,32 @@ const HomePage=()=>{
   }
 
   useEffect(()=>{
-    axios.get('https://koovs-api.vercel.app/shop_women').then((res)=>{
+    axios.get('https://koovs-db.onrender.com/shop_women').then((res)=>{
       setWomenData(res.data)
     })
   },[])
   useEffect(()=>{
-    axios.get('https://koovs-api.vercel.app/shop_men').then((res)=>{
+    axios.get('https://koovs-db.onrender.com/shop_men').then((res)=>{
         setMenData(res.data)
     })
   },[])
   useEffect(()=>{
-    axios.get('https://koovs-api.vercel.app/varsity-jackets').then((res)=>{
+    axios.get('https://koovs-db.onrender.com/varsity-jackets').then((res)=>{
         setVarsityData(res.data)
     })
   },[])
   useEffect(()=>{
-    axios.get('https://koovs-api.vercel.app/artist-collab').then((res)=>{
+    axios.get('https://koovs-db.onrender.com/artist-collab').then((res)=>{
         setArtistData(res.data)
     })
   },[])
   useEffect(()=>{
-    axios.get('https://koovs-api.vercel.app/koovs-women').then((res)=>{
+    axios.get('https://koovs-db.onrender.com/koovs-women').then((res)=>{
         setKoovsWomenData(res.data)
     })
   },[])
   useEffect(()=>{
-    axios.get('https://koovs-api.vercel.app/koovs-men').then((res)=>{
+    axios.get('https://koovs-db.onrender.com/koovs-men').then((res)=>{
         setKoovsMenData(res.data)
     })
   },[])
