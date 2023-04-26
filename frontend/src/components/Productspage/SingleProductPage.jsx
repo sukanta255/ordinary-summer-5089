@@ -226,6 +226,13 @@ const SingleProductPage = () => {
                 />
               </Flex>
             </Flex>
+            {/* Total Amount Based on Quantity */}
+            <Flex direction={"column"} alignItems={"flex-start"}>
+              <Text as={"b"} mb={"2"}>
+                Total Price
+              </Text>
+              <Text as={"b"} borderRadius={"6px"} border={"2px solid black"} p={2}>{data.price * quantity}$</Text>
+            </Flex>
             {/* Add to Cart Btn */}
             <Input mt={"8"} type={"submit"} value={"Add to Cart"} borderColor={"black"} bgColor={"black"} color={"white"} _hover={{ bgColor: "white", color: "black" }} />
           </Flex>
