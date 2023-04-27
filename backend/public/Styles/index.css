@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  max-width: 120px;
+  width: 100%;
+}
+
+#server {
+  max-width: 500px;
+  width: 100%;
+}
+section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+section > p {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #005eff;
+  color: #ffffff;
+  transition: 700ms;
+  cursor: pointer;
+}
+
+section > p:hover {
+  background-color: #8a2be2;
+}
+
+@media all and (max-width: 480px) {
+  section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
