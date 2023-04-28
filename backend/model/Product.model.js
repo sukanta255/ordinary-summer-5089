@@ -38,6 +38,10 @@ const ProductSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  size:{
+    type:String,
+    default:""
+  },
   isSellingFast: {
     type: Boolean,
     default: false,

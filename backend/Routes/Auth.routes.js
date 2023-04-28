@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const userModel = require("../model/User.model");
-const userRouter = express.Router();
+const AuthRouter = express.Router();
 
-userRouter.post("/register", async (req, res) => {
+AuthRouter.post("/register", async (req, res) => {
   try {
     const { email, password } = req.body;
     const userExists = await userModel.findOne({ email });
@@ -28,7 +28,7 @@ userRouter.post("/register", async (req, res) => {
   }
 });
 
-userRouter.post("/login", async (req, res) => {
+AuthRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await userModel.findOne({ email });
@@ -41,7 +41,28 @@ userRouter.post("/login", async (req, res) => {
       return res.status(401).send({ msg: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ email: user.email, userId: user._id }, process.env["SECRET_KEY"]);
+    const token = jwt.sign({ email: user.email, userId: user._id, admin: false }, process.env["SECRET_KEY"]);
+    return res.json({ msg: "Login success", token });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send({ msg: "Internal Server error" });
+  }
+});
+
+AuthRouter.post("/admin", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(400).send("Admin Not Found, Please Reach Out to Officials");
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    if (!isPasswordCorrect) {
+      return res.status(401).send({ msg: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ email: user.email, userId: user._id, admin: true }, process.env["SECRET_KEY"]);
     return res.json({ msg: "Login success", token });
   } catch (error) {
     console.error(error.message);
@@ -49,4 +70,4 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-module.exports = userRouter;
+module.exports = AuthRouter;
