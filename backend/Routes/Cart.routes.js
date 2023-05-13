@@ -4,9 +4,9 @@ const ProductModel = require("../model/Product.model");
 const cartProductModel = require("../model/CartProducts.model");
 const cartModel = require("../model/Cart.model");
 
-cartRouter.post("/", async (req, res) => {
+cartRouter.post("/:userId", async (req, res) => {
   const { productId, quantity, size } = req.body;
-  const { userId } = req.user;
+  const { userId } = req.params;
 
   const product = await ProductModel.findById(productId);
   if (!product) {
@@ -35,9 +35,8 @@ cartRouter.post("/", async (req, res) => {
   res.json({ msg: "Product added to cart" });
 });
 
-cartRouter.patch("/:cartProductId", async (req, res) => {
+cartRouter.patch("/:cartProductId/:userId", async (req, res) => {
   const { quantity, size } = req.body;
-  const { userId } = req.user;
   const { cartProductId } = req.params;
 
   const cart = await cartModel.findOne({ user: userId });
@@ -63,9 +62,9 @@ cartRouter.patch("/:cartProductId", async (req, res) => {
 
 // GET all cart items for a user
 cartRouter.get("/", async (req, res) => {
-  const { userId } = req.query;
+  const { user } = req.query;
   try {
-    const cart = await cartModel.findOne({ user: userId }).populate("products");
+    const cart = await cartModel.findOne({ user }).populate("products");
 
     if (!cart) {
       return res.status(404).send({ msg: "Cart not found" });

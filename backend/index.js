@@ -22,6 +22,7 @@ app.use(authenticator);
 app.use("/user", userRouter);
 
 app.listen(process.env.port, async () => {
+  
   try {
     await connectDB;
     console.log("connected to db");

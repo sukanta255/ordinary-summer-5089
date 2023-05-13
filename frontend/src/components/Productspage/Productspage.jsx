@@ -31,7 +31,7 @@ import {
 import ProductCard from "./ProductCard";
 
 import { FaAngleDown, FaStar } from "react-icons/fa";
-import { getData, getFullData } from "../../API/ProductRequests";
+import { getFullData } from "../../API/ProductRequests";
 import PaginationComp from "./PaginationComp";
 import { useNavigate } from "react-router-dom";
 
@@ -62,9 +62,10 @@ const Productspage = () => {
     setLoading(true);
     try {
       const res = await getFullData(`?mainCategory=New%20in&page=${Page}&limit=25`);
+      console.log(res);
       setLoading(false);
-      setData(res.data[0]);
-      setCount(res.data[1]);
+      setData(res.data.data);
+      setCount(res.data.count);
     } catch (error) {
       setLoading(false);
       setError(true);
