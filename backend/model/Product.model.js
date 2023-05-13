@@ -21,11 +21,6 @@ const ProductSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  quantity: {
-    type: Number,
-    required: true,
-    default: 1,
-  },
   reducedPrice: {
     type: String,
     default: "",
@@ -37,10 +32,6 @@ const ProductSchema = new mongoose.Schema({
   isOutlet: {
     type: Boolean,
     default: false,
-  },
-  size:{
-    type:String,
-    default:""
   },
   isSellingFast: {
     type: Boolean,

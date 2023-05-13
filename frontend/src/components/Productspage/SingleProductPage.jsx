@@ -24,30 +24,36 @@ import {
 import React, { useCallback, useEffect, useState } from "react";
 import { BsFillEyeFill, BsPlus, BsStar } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SizeBar from "./SizeBar";
-import { useForm } from "react-hook-form";
 import { getFullData } from "../../API/ProductRequests";
 import { cloth, color, descBox, imgBox, price, qty, singleProd, tabs, total, views } from "../../Styles/SingleProductStyles";
+import { postCartData } from "../../API/CartRequests";
 
 const SingleProductPage = () => {
   const toast = useToast();
+  const myNav = useNavigate();
+  const { id } = useParams();
 
   //redux actions
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [quantity, setQuantity] = useState("1");
-  const [localData, setLocalData] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
+  const [size, setSize] = useState("S");
+  const [userID, setUserID] = useState("");
 
-  const { id } = useParams();
+  useEffect(() => {
+    setUserID(localStorage.getItem("token") || "");
+  }, []);
 
   const getProductsData = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await getFullData(`?_id=${id}`);
+      const res = await getFullData(`/${id}`);
+      console.log("res: ", res.data);
       setLoading(false);
-      setData(res.data[0][0]);
+      setData(res.data);
     } catch (error) {
       setLoading(false);
       setError(true);
@@ -58,10 +64,6 @@ const SingleProductPage = () => {
   useEffect(() => {
     getProductsData();
   }, [getProductsData]);
-
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(localData));
-  }, [localData]);
 
   const handleQuantity = (val) => {
     setQuantity((prev) => `${+prev + val}`);
@@ -79,19 +81,50 @@ const SingleProductPage = () => {
   }, []);
 
   //Quantity
-  const { register } = useForm();
 
-  const onSubmit = (e) => {
+  const handleAddToCart = async (e) => {
     e.preventDefault();
-    setLocalData([...localData, { ...data, quantity: +quantity }]);
-    toast({
-      position: "bottom-left",
-      render: () => (
-        <Box color="white" p={3} bg="blackAlpha.900">
-          Item Added Into Cart
-        </Box>
-      ),
-    });
+    //Disable Current Submit Button
+    e.target[8].disabled = true;
+    try {
+      if (!userID) {
+        toast({
+          title: "Please Login First",
+          description: "Redirecting...",
+          status: "warning",
+          duration: 2000,
+          isClosable: true,
+        });
+        setTimeout(() => {
+          myNav("/login");
+        }, 1000);
+        return;
+      }
+      const status = await postCartData({
+        productId: data._id,
+        quantity,
+        size,
+      }); //User Id Not Provided
+      console.log(status);
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color="white" p={3} bg="blackAlpha.900">
+            Item Added Into Cart
+          </Box>
+        ),
+      });
+    } catch (error) {
+      console.log("error: ", error);
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color="red.800" p={3} bg="blackAlpha.900">
+            Something Went Wrong
+          </Box>
+        ),
+      });
+    }
   };
 
   /* Cloth Sizes Can be Picked by the console.log */
@@ -99,7 +132,7 @@ const SingleProductPage = () => {
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "size",
     defaultValue: "S",
-    onChange: console.log,
+    onChange: setSize,
   });
   const group = getRootProps();
 
@@ -112,7 +145,7 @@ const SingleProductPage = () => {
       <Image {...singleProd.errImg} />
     </Flex>
   ) : (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleAddToCart}>
       <Flex {...singleProd.main}>
         {/* Main Box */}
         <Flex {...singleProd.subMain}>
@@ -154,7 +187,7 @@ const SingleProductPage = () => {
             </Flex>
             {/* Cloth Sizes */}
             <Flex {...cloth.main}>
-              <Text {...cloth.text}>Size: S</Text>
+              <Text {...cloth.text}>Size: {size}</Text>
               <HStack {...group}>
                 {options.map((value) => {
                   const radio = getRadioProps({ value });
@@ -182,7 +215,7 @@ const SingleProductPage = () => {
                 <IconButton {...qty.incBtn} isDisabled={quantity === "6"} icon={<BsPlus style={{ fontSize: "24px" }} />} onClick={() => handleQuantity(+1)} />
                 <FormControl>
                   <PinInput value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-                    <PinInputField {...register("firstName", { min: 1, max: 15 })} />
+                    <PinInputField />
                   </PinInput>
                 </FormControl>
                 <IconButton {...qty.decBtn} isDisabled={quantity === "1"} icon={<AiOutlineMinus />} onClick={() => handleQuantity(-1)} />

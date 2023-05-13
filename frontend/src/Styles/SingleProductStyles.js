@@ -210,6 +210,7 @@ export const total = {
     borderColor: "black",
     bgColor: "black",
     color: "white",
+    cursor: "pointer",
     _hover: { bgColor: "white", color: "black" },
   },
 };

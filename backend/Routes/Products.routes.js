@@ -3,13 +3,30 @@ const ProductModel = require("../model/Product.model");
 const ProductRouter = express.Router();
 
 ProductRouter.get("/", async (req, res) => {
-  const filter = req.query;
+  const { page, limit, ...filter } = req.query;
   try {
-    const data = await ProductModel.find(filter);
+    const data = await ProductModel.find(filter)
+      .skip((page - 1) * limit)
+      .limit(limit);
     if (!data) {
-      return res.status(401).send({ msg: "Data Related to Query, Not Found" });
+      return res.status(401).send({ msg: "Not Found" });
     }
-    res.json(data);
+    const count = await ProductModel.find().countDocuments();
+    res.json({ data, count });
+  } catch (error) {
+    console.log("error: ", error);
+    res.status(500).send({ msg: "Internal Server Error" });
+  }
+});
+
+ProductRouter.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await ProductModel.findById({ _id: id })
+    if (!data) {
+      return res.status(401).send({ msg: "Not Found" });
+    }
+    res.json(data)
   } catch (error) {
     console.log("error: ", error);
     res.status(500).send({ msg: "Internal Server Error" });
