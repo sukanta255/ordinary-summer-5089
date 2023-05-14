@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   Flex,
   FormControl,
@@ -41,17 +42,17 @@ const SingleProductPage = () => {
   const [error, setError] = useState(false);
   const [quantity, setQuantity] = useState("1");
   const [size, setSize] = useState("S");
-  const [userID, setUserID] = useState("");
+  const [token, setToken] = useState("");
+  const [cartLoading, setCartLoading] = useState(false);
 
   useEffect(() => {
-    setUserID(localStorage.getItem("token") || "");
+    setToken(localStorage.getItem("token") || "");
   }, []);
 
   const getProductsData = useCallback(async () => {
     setLoading(true);
     try {
       const res = await getFullData(`/${id}`);
-      console.log("res: ", res.data);
       setLoading(false);
       setData(res.data);
     } catch (error) {
@@ -71,6 +72,27 @@ const SingleProductPage = () => {
 
   const [randomViewer, SetRandomViewer] = useState(23);
 
+  const customToast = (type, title, description, status_color) => {
+    if (type === 1) {
+      toast({
+        title,
+        description,
+        status: status_color,
+        duration: 2000,
+        isClosable: true,
+      });
+    } else if (type === 2) {
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color={"white"} p={3} bg={`${status_color}.500`}>
+            {title}
+          </Box>
+        ),
+      });
+    }
+  };
+
   //Dummy View Users
   /* --> Difference of 26-18, multiplied to random number, got its floor value, added min value */
   useEffect(() => {
@@ -84,47 +106,27 @@ const SingleProductPage = () => {
 
   const handleAddToCart = async (e) => {
     e.preventDefault();
-    //Disable Current Submit Button
-    e.target[8].disabled = true;
-    try {
-      if (!userID) {
-        toast({
-          title: "Please Login First",
-          description: "Redirecting...",
-          status: "warning",
-          duration: 2000,
-          isClosable: true,
-        });
-        setTimeout(() => {
-          myNav("/login");
-        }, 1000);
-        return;
-      }
-      const status = await postCartData({
+    setCartLoading(true);
+    if (!token) {
+      customToast(1, "Please Login First", "Redirecting...", "warning");
+      return setTimeout(() => {
+        myNav("/login");
+      }, 1500);
+    }
+    const res = await postCartData(
+      {
         productId: data._id,
         quantity,
         size,
-      }); //User Id Not Provided
-      console.log(status);
-      toast({
-        position: "bottom-left",
-        render: () => (
-          <Box color="white" p={3} bg="blackAlpha.900">
-            Item Added Into Cart
-          </Box>
-        ),
-      });
-    } catch (error) {
-      console.log("error: ", error);
-      toast({
-        position: "bottom-left",
-        render: () => (
-          <Box color="red.800" p={3} bg="blackAlpha.900">
-            Something Went Wrong
-          </Box>
-        ),
-      });
+      },
+      token
+    );
+    if (res.status) {
+      setCartLoading(false);
+      return customToast(2, "Item Added Into Cart", "", "green");
     }
+    customToast(2, res.error, "", "red");
+    return setCartLoading(false);
   };
 
   /* Cloth Sizes Can be Picked by the console.log */
@@ -227,7 +229,9 @@ const SingleProductPage = () => {
               <Text {...total.text}>{data.price * quantity}$</Text>
             </Flex>
             {/* Add to Cart Btn */}
-            <Input {...total.submitBtn} />
+            <Button isDisabled={cartLoading} {...total.submitBtn}>
+              {cartLoading ? <Spinner /> : "Add to Cart"}
+            </Button>
           </Flex>
         </Flex>
         {/** Tabs View */}

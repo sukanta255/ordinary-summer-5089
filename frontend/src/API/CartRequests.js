@@ -11,12 +11,21 @@ export const getCartData = async (userID) => {
   }
 };
 
-export const postCartData = async (obj, userId) => {
+export const postCartData = async (obj, token) => {
   try {
-    return await axios.post(`${BaseURL}/${userId}`, obj);
-  } catch (err) {
-    console.log("err: ", err);
-    return err;
+    const res = await axios.post(`${BaseURL}`, obj, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log("res: ", res);
+    return { status: true, data: res.data.msg };
+  } catch (error) {
+    console.log("err: ", error);
+    if (error.response) {
+      return { status: false, error: error.response.data.msg };
+    }
+    return { status: false, error: error.message };
   }
 };
 export const patchCartData = async (cartProdId, obj, userId) => {
