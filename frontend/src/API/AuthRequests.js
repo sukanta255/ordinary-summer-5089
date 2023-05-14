@@ -18,14 +18,13 @@ export const signUpAPI = async (userData) => {
 export const LoginAPI = async (userData) => {
   try {
     const res = await axios.post(`${BASEURL}/login`, userData);
-    console.log("res: ", res);
     if (res.status === 200) {
       return { status: true, data: res.data };
     }
   } catch (error) {
     console.log("error: ", error);
     if (error.response.status !== 200) {
-      return { status: false, error: error.response.data.msg };
+      return { status: false, error: error.response.data };
     }
   }
 };

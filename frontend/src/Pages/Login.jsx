@@ -35,6 +35,7 @@ export default function Login() {
     validate: LoginValidate,
     onSubmit: async (values) => {
       const res = await LoginAPI(values);
+
       if (res.status === false) {
         setLoading(false);
         return customToast("red", res.error);

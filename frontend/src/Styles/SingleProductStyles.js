@@ -206,7 +206,6 @@ export const total = {
   submitBtn: {
     mt: "8",
     type: "submit",
-    value: "Add to Cart",
     borderColor: "black",
     bgColor: "black",
     color: "white",

@@ -1,13 +1,19 @@
 const express = require("express");
 const cartRouter = express.Router();
 const ProductModel = require("../model/Product.model");
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 const cartProductModel = require("../model/CartProducts.model");
 const cartModel = require("../model/Cart.model");
 
-cartRouter.post("/:userId", async (req, res) => {
+cartRouter.post("/", async (req, res) => {
   const { productId, quantity, size } = req.body;
-  const { userId } = req.params;
-
+  const token = req.headers.authorization;
+  var decoded = jwt.verify(token, process.env["SECRET_KEY"]);
+  if (!decoded) {
+    return res.status(400).send({ msg: "Session End, Please Login Again" });
+  }
+  const { userId } = decoded;
   const product = await ProductModel.findById(productId);
   if (!product) {
     return res.status(404).send({ msg: "Product not found" });

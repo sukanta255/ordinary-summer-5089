@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -58,11 +58,10 @@ const Productspage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  const getProductsData = async () => {
+  const getProductsData = useCallback(async () => {
     setLoading(true);
     try {
       const res = await getFullData(`?mainCategory=New%20in&page=${Page}&limit=25`);
-      console.log(res);
       setLoading(false);
       setData(res.data.data);
       setCount(res.data.count);
@@ -71,10 +70,10 @@ const Productspage = () => {
       setError(true);
       console.log("error: ", error);
     }
-  };
+  }, [Page]);
   useEffect(() => {
     getProductsData();
-  }, [Page]);
+  }, [getProductsData, Page]);
 
   return loading ? (
     <Flex justifyContent={"center"} h={"600px"} w={"100%"}>
