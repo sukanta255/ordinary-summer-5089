@@ -27,17 +27,17 @@ import { ReactText } from 'react';
 
 
 const LinkItems= [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
+  { name: 'Dashboard', icon: FiHome },
+  { name: 'Statistic', icon: FiTrendingUp },
+  { name: 'Mannage Data', icon: FiCompass },
+  { name: 'Logout', icon: FiStar },
   { name: 'Settings', icon: FiSettings },
 ];
 
 export default function Admin_Sidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100%" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH="100%" bg={useColorModeValue('plum', 'plum')}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -67,7 +67,7 @@ export default function Admin_Sidebar({ children }) {
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue('plum', 'gray.900')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w="100%"
