@@ -1,18 +1,19 @@
 import React from 'react'
 import styles from "./Admin_Home.module.css"
 import Admin_Sidebar from './Admin_Sidebar'
+import { Box } from '@chakra-ui/react'
 const Admin_Home = () => {
   return (
-    <div class={styles.adminmain}>
+    <Box className={styles.adminmain} display={["flex"]} flexDirection={["column","column","row"]}>
         
-        <div className={styles.sidebar}>
+        <Box w={["100%","100%","20%"]}bg={"tomato"} h={["70px","70px","400px"]} >
            <Admin_Sidebar/>
-        </div>
-        <div>
+        </Box>
+        <Box w={["100%","100%","80%"]} h={"450px"} bg={"pink"}>
             <div></div>
             <div></div>
-        </div>
-    </div>
+        </Box>
+    </Box>
   )
 }
 
