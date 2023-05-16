@@ -152,7 +152,9 @@ const Admin_Home = () => {
           <Box w={["80%","75%","45%"]} h={"300px"} bg={"#dcbde8"} p="10px 20px 30px" m="auto">
             <MapComponent />
           </Box>
-          <Box w={["80%","75%","45%"]} h={"300px"} bg={"#71a9cd"} m="auto"></Box>
+          <Box w={["80%","75%","45%"]} h={"300px"} bg={"#71a9cd"} m="auto">
+            <Image h="100%" w="100%" src="https://www.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg" alt="graph"></Image>
+          </Box>
         </Flex>
       </Box>
     </Box>
