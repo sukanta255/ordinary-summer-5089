@@ -148,11 +148,11 @@ const Admin_Home = () => {
             </Box>
           </Box>
         </SimpleGrid>
-        <Flex justifyContent={"space-around"} m={"10px"}>
-          <Box w={"45%"} h={"300px"} bg={"#dcbde8"} p="10px 20px 30px">
+        <Flex justifyContent={"space-around"} m={"10px"} flexDirection={["column","column","row"]} >
+          <Box w={["80%","75%","45%"]} h={"300px"} bg={"#dcbde8"} p="10px 20px 30px" m="auto">
             <MapComponent />
           </Box>
-          <Box w={"40%"} h={"300px"} bg={"#71a9cd"}></Box>
+          <Box w={["80%","75%","45%"]} h={"300px"} bg={"#71a9cd"} m="auto"></Box>
         </Flex>
       </Box>
     </Box>
