@@ -33,31 +33,31 @@ import { Tooltip } from "@chakra-ui/react";
 import { SlMagnifier } from "react-icons/sl";
 import { BsPerson } from "react-icons/bs";
 import { BiShoppingBag } from "react-icons/bi";
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
   const { isLoggedIn, username, logout } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const myNav = useNavigate();
-  const [user, setUser] = useState("");
   const toast = useToast();
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    toast({
-      position: "bottom-left",
-      render: () => (
-        <Box color="white" p={3} bg={`green.500`}>
-          Logout Success, Redirecting...
-        </Box>
-      ),
-    });
     logout();
-    setTimeout(() => {
-      myNav("/login");
-    }, 1000);
+    if (!username) {
+      toast({
+        position: "bottom-left",
+        render: () => (
+          <Box color="white" p={3} bg={`green.500`}>
+            Logout Success, Redirecting...
+          </Box>
+        ),
+      });
+      return setTimeout(() => {
+        myNav("/login");
+      }, 1000);
+    }
+    return myNav("/login");
   };
 
   const btnRef = useRef();
@@ -270,7 +270,7 @@ const Navbar = () => {
                   <SlMagnifier size={"20px"} />
                 </Button>
               </Tooltip>
-              <Tooltip p={1} hasArrow label={isLoggedIn ? `${username}. Logout?` : "Login/SignUp"} bg="black" color="white">
+              <Tooltip p={1} hasArrow label={username ? `${username}. Logout?` : "Login/SignUp"} bg="black" color="white">
                 <Button onClick={handleLogout} backgroundColor={"white"}>
                   <BsPerson size={"20px"} />
                 </Button>
@@ -354,7 +354,7 @@ const Navbar = () => {
                 </Button>
               </Tooltip>
               <Tooltip hasArrow label="Cart " bg="black" color="white">
-                <Button as={Link} to={"/cart"} backgroundColor={"white"}>
+                <Button as={Link} to={"/cartpage"} backgroundColor={"white"}>
                   <BiShoppingBag size={"20px"} />
                   <p className="cartValue">0</p>
                 </Button>

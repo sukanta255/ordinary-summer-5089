@@ -2,12 +2,13 @@ import axios from "axios";
 
 const BaseURL = `http://localhost:4100/cart`;
 
-export const getCartData = async (userID) => {
+export const getCartData = async (token) => {
   try {
-    return await axios.get(`${BaseURL}?user=${userID}`);
-  } catch (err) {
-    console.log("err: ", err);
-    return err;
+    const res = await axios.get(BaseURL, { headers: { Authorization: token } });
+    console.log("res.data: ", res.data);
+    return { status: true, data: res.data };
+  } catch (error) {
+    return { status: false, error: error.response.data.msg };
   }
 };
 
@@ -28,19 +29,27 @@ export const postCartData = async (obj, token) => {
     return { status: false, error: error.message };
   }
 };
-export const patchCartData = async (cartProdId, obj, userId) => {
+export const patchCartData = async (cartProdId, obj) => {
   try {
-    return await axios.patch(`${BaseURL}/${cartProdId}/${userId}`, obj);
-  } catch (err) {
-    console.log("err: ", err);
-    return err;
+    const res = await axios.patch(`${BaseURL}/${cartProdId}`, obj);
+    return { status: true, data: res.data.msg };
+  } catch (error) {
+    console.log("err: ", error);
+    if (error.response) {
+      return { status: false, error: error.response.data.msg };
+    }
+    return { status: false, error: error.message };
   }
 };
-export const deleteCartData = async (cartId, productId) => {
+export const deleteCartData = async (cartId, productId, token) => {
   try {
-    return await axios.delete(`${BaseURL}/${cartId}/product/${productId}`);
-  } catch (err) {
-    console.log("err: ", err);
-    return err;
+    const res = await axios.delete(`${BaseURL}/${cartId}/product/${productId}`, { headers: { Authorization: token } });
+    return { status: true, data: res.data.msg };
+  } catch (error) {
+    console.log("err: ", error);
+    if (error.response) {
+      return { status: false, error: error.response.data.msg };
+    }
+    return { status: false, error: error.message };
   }
 };

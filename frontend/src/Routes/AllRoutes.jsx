@@ -10,6 +10,7 @@ import PieChart from "../components/AdminPage/PieChart";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import PaymentPage from "../components/PaymentPage/PaymentPage";
+import CartPage from "../Pages/CartPage";
 
 const AllRoutes = () => {
   return (
@@ -22,7 +23,7 @@ const AllRoutes = () => {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-
+        <Route path="/cartpage" element={<CartPage />} />
         <Route path="/updatedata" element={<UpdateData />} />
         <Route path="/chart" element={<PieChart />} />
         <Route path="/payment" element={<PaymentPage />} />
