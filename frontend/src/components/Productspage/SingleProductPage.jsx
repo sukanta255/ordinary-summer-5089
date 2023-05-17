@@ -116,7 +116,7 @@ const SingleProductPage = () => {
     const res = await postCartData(
       {
         productId: data._id,
-        quantity,
+        quantity: +quantity,
         size,
       },
       token

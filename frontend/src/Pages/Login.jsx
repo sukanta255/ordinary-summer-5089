@@ -43,8 +43,8 @@ export default function Login() {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user);
       login(res.data.user);
-      customToast("green", "Sign up Success, Redirecting...");
-      setTimeout(() => {
+      customToast("green", "Login Success, Redirecting...");
+      return setTimeout(() => {
         myNav("/products");
       }, 1000);
     },
