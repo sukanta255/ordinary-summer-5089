@@ -1,5 +1,5 @@
 import { Flex, Text, Link, Image, SimpleGrid, Button, useToast, Spinner } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import CartCard from "../components/CartPage/CartCard";
 import paymentmethod from "../Assets/payment-methods.png";
 import { deleteCartData, getCartData, patchCartData } from "../API/CartRequests";
@@ -9,21 +9,55 @@ const CartPage = () => {
   const myNav = useNavigate();
   const toast = useToast();
 
-  const customToast = (title, description, status) => {
-    toast({
-      title,
-      description,
-      status,
-      duration: 2000,
-      isClosable: true,
-    });
-  };
+  const customToast = useCallback(
+    (title, description, status) => {
+      toast({
+        title,
+        description,
+        status,
+        duration: 2000,
+        isClosable: true,
+      });
+    },
+    [toast]
+  );
 
   const [empty, setEmpty] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState("");
   const [priceTotal, setPriceTotal] = useState(0);
+
+  const retriveUserCartData = useCallback(
+    async (token) => {
+      setLoading(true);
+      const res = await getCartData(token);
+      if (!res.status) {
+        setEmpty(true);
+        setLoading(false);
+        customToast(res.error, "", "info");
+        if (res.error === "Session End, Please Login Again...") {
+          customToast("Redirecting...", "", "warning");
+          return setTimeout(() => {
+            myNav("/login");
+          }, 2000);
+        }
+      }
+
+      res.data.products.map(async (el) => {
+        await setPriceTotal(0);
+        await setPriceTotal((prev) => prev + el.product.price * el.quantity);
+      });
+
+      if (res.data.products.length === 0) {
+        setEmpty(true);
+      }
+
+      setLoading(false);
+      setData(res.data);
+    },
+    [customToast, myNav]
+  );
 
   useEffect(() => {
     setToken(localStorage.getItem("token") || "");
@@ -40,35 +74,7 @@ const CartPage = () => {
     } else {
       retriveUserCartData(myTokenVerify);
     }
-  }, []);
-
-  const retriveUserCartData = async (token) => {
-    setLoading(true);
-    const res = await getCartData(token);
-    if (!res.status) {
-      setEmpty(true);
-      setLoading(false);
-      customToast(res.error, "", "info");
-      if (res.error === "Session End, Please Login Again...") {
-        customToast("Redirecting...", "", "warning");
-        return setTimeout(() => {
-          myNav("/login");
-        }, 2000);
-      }
-    }
-
-    res.data.products.map(async (el) => {
-      await setPriceTotal(0);
-      await setPriceTotal((prev) => prev + el.product.price * el.quantity);
-    });
-
-    if (res.data.products.length === 0) {
-      setEmpty(true);
-    }
-
-    setLoading(false);
-    setData(res.data);
-  };
+  }, [customToast, myNav, retriveUserCartData]);
 
   const deleteCartProduct = async (cartProductId) => {
     const res = await deleteCartData(data._id, cartProductId, token);
@@ -94,6 +100,10 @@ const CartPage = () => {
     }
     customToast("Updated Failed", "Internal Server Error", "error");
     return res.status;
+  };
+
+  const handlePaymentPage = () => {
+    myNav("/payment");
   };
   return (
     <Flex direction={"column"} justifyContent={"center"} alignItems={"center"} w={"100%"}>
@@ -130,7 +140,7 @@ const CartPage = () => {
                   Order Total {priceTotal + 10}$
                 </Text>
 
-                <Button width={"100%"} bgColor={"black"} color={"white"} _hover={{ bgColor: "blue.500" }}>
+                <Button width={"100%"} onClick={handlePaymentPage} bgColor={"black"} color={"white"} _hover={{ bgColor: "blue.500" }}>
                   Proceed to Checkout
                 </Button>
                 <Flex justifyContent={"center"}>

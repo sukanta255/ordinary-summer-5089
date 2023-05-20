@@ -1,6 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import CardDetails from "./CardDetails";
+import CardDetails from "../components/PaymentPage/CardDetails";
+import AddressComp from "../components/PaymentPage/AddressComp";
 
 const PaymentPage = () => {
   return (
@@ -10,7 +11,10 @@ const PaymentPage = () => {
           Payment
         </Text>
       </Flex>
-      <CardDetails />
+      <Flex direction={["column", "column", "row"]} justifyContent={"center"}>
+        <AddressComp />
+        <CardDetails />
+      </Flex>
     </Flex>
   );
 };

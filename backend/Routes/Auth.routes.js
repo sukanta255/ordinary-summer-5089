@@ -41,8 +41,8 @@ AuthRouter.post("/login", async (req, res) => {
       return res.status(400).send({ msg: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ email: user.email, userId: user._id, admin: false }, process.env["SECRET_KEY"]);
-    return res.json({ msg: "Login success", token, user: user.firstname });
+    const token = jwt.sign({ email: user.email, userId: user._id, admin: user.admin }, process.env["SECRET_KEY"]);
+    return res.json({ msg: "Login success", token, user: user.firstname, admin: user.admin });
   } catch (error) {
     console.error(error.message);
     res.status(500).send({ msg: "Internal Server error" });
