@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../components/Homepage/HomePage";
-import Productspage from "../components/Productspage/Productspage";
+import HomePage from "../Pages/HomePage";
+import Productspage from "../Pages/Productspage";
 import SingleProductPage from "../components/Productspage/SingleProductPage";
 import AdminDashboard from "../components/AdminPage/AdminDashboard";
 import UpdateData from "../components/AdminPage/UpdateData";
@@ -9,7 +9,7 @@ import CreateData from "../components/AdminPage/CreateData";
 import PieChart from "../components/AdminPage/PieChart";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
-import PaymentPage from "../components/PaymentPage/PaymentPage";
+import PaymentPage from "../Pages/PaymentPage";
 import CartPage from "../Pages/CartPage";
 
 const AllRoutes = () => {
