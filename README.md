@@ -3,7 +3,7 @@ Koovs is a Ecomerse related website which helps you to find the different kinds 
 
 ## Deployed Link
 
-Visit : https://frontend-mohit-6164.vercel.app/
+Visit : https://koovs-mu.vercel.app/
 
 ## Responsive for all screen sizes
 
