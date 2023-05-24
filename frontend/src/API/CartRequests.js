@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseURL = `http://localhost:4100/cart`;
+const BaseURL = `https://koovsbackend.onrender.com/cart`;
 
 export const getCartData = async (token) => {
   try {
