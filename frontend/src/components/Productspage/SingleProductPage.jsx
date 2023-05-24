@@ -8,7 +8,6 @@ import {
   HStack,
   IconButton,
   Image,
-  Input,
   PinInput,
   PinInputField,
   Show,

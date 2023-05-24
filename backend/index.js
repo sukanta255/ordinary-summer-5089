@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const cors = require("cors");
 const ProductRouter = require("./Routes/Products.routes");
-const authenticator = require("./middleware/Auth.middleware");
+const authenticator = require("./Middleware/Auth.middleware");
 const connectDB = require("./Connection/connectDB");
 const AuthRouter = require("./Routes/Auth.routes");
 const userRouter = require("./Routes/User.routes");
