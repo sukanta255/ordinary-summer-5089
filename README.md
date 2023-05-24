@@ -1,9 +1,9 @@
 ## Project Name - ordinary-summer-5089
-Kapdelo is a Ecomerse related website which helps you to find the different kinds of the products. Kapdelo is part of THG Holdings plc, a globally renowned end-to-end tech platform specializing in taking brands direct to consumers across the globe. Using its proprietary technology and infrastructure, THG Ingenuity, the Group enables brands to grow at scale while driving unrivalled value and continuous performance.
+Koovs is a Ecomerse related website which helps you to find the different kinds of the products. It is part of THG Holdings plc, a globally renowned end-to-end tech platform specializing in taking brands direct to consumers across the globe. Using its proprietary technology and infrastructure, THG Ingenuity, the Group enables brands to grow at scale while driving unrivalled value and continuous performance.
 
 ## Deployed Link
 
-Visit : https://frontend-mohit-6164.vercel.app/
+Visit : https://koovs-mu.vercel.app/
 
 ## Responsive for all screen sizes
 

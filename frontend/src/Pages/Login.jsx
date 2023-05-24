@@ -42,9 +42,14 @@ export default function Login() {
       }
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user);
-      login(res.data.user);
-      customToast("green", "Sign up Success, Redirecting...");
-      setTimeout(() => {
+      if (res.data.admin) {
+        localStorage.setItem("admin", res.data.admin);
+      } else {
+        localStorage.removeItem("admin");
+      }
+      login(res.data.user, res.data.admin);
+      customToast("green", "Login Success, Redirecting...");
+      return setTimeout(() => {
         myNav("/products");
       }, 1000);
     },

@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   Box,
   useDisclosure,
@@ -11,6 +10,7 @@ import {
   MenuList,
   MenuItem,
   Hide,
+  IconButton,
   Stack,
   Drawer,
   DrawerBody,
@@ -20,7 +20,6 @@ import {
   DrawerOverlay,
   Flex,
   Button,
-  useToast,
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
@@ -32,32 +31,27 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
 import { SlMagnifier } from "react-icons/sl";
 import { BsPerson } from "react-icons/bs";
+import { RiAdminFill } from "react-icons/ri";
 import { BiShoppingBag } from "react-icons/bi";
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+import { MdAdminPanelSettings, MdLogout } from "react-icons/md";
 
 const Navbar = () => {
-  const { isLoggedIn, username, logout } = useContext(AuthContext);
+  const { username, logout, admin } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const myNav = useNavigate();
-  const [user, setUser] = useState("");
-  const toast = useToast();
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    toast({
-      position: "bottom-left",
-      render: () => (
-        <Box color="white" p={3} bg={`green.500`}>
-          Logout Success, Redirecting...
-        </Box>
-      ),
-    });
-    logout();
-    setTimeout(() => {
+    if (username) {
+      logout();
+    } else {
       myNav("/login");
-    }, 1000);
+    }
+  };
+
+  const handleAdminRoute = () => {
+    myNav("/admin");
   };
 
   const btnRef = useRef();
@@ -74,7 +68,7 @@ const Navbar = () => {
                       <Image src="https://cdn-icons-png.flaticon.com/512/44/44646.png" alt="apple_Store" />
                       <Text as="span">1.8M Followers</Text>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.licious&pli=1" target={"_blank"}>
+                    <a href="https://play.google.com/store/apps/details?id=com.licious&pli=1" target={"_blank"} rel="noreferrer">
                       <Image src="https://cdn-icons-png.flaticon.com/512/87/87390.png?w=360" alt="play_store" />
                       <Text as="span">682k Followers</Text>
                     </a>
@@ -266,25 +260,47 @@ const Navbar = () => {
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={-2}>
               <Tooltip hasArrow label="Search " bg="black" color="white">
-                <Button backgroundColor={"white"}>
+                <Button _hover={{ bgColor: "transparent" }} backgroundColor={"white"}>
                   <SlMagnifier size={"20px"} />
                 </Button>
               </Tooltip>
-              <Tooltip p={1} hasArrow label={isLoggedIn ? `${username}. Logout?` : "Login/SignUp"} bg="black" color="white">
-                <Button onClick={handleLogout} backgroundColor={"white"}>
-                  <BsPerson size={"20px"} />
-                </Button>
-              </Tooltip>
+              {!admin ? (
+                <Tooltip p={1} hasArrow label={username ? `${username}. Logout?` : "Login/SignUp"} bg="black" color="white">
+                  <Button _hover={{ bgColor: "transparent" }} onClick={handleLogout} backgroundColor={"white"}>
+                    <BsPerson size={"20px"} />
+                  </Button>
+                </Tooltip>
+              ) : (
+                <Menu>
+                  <MenuButton
+                    _hover={{ bgColor: "transparent" }}
+                    _active={{ bgColor: "transparent" }}
+                    backgroundColor={"white"}
+                    as={IconButton}
+                    icon={<MdAdminPanelSettings size={"20px"} />}
+                  />
+                  <MenuList>
+                    <MenuItem _hover={{ color: "white", bgColor: "black" }} onClick={handleLogout} gap={2}>
+                      <MdLogout />
+                      Logout
+                    </MenuItem>
+                    <MenuItem onClick={handleAdminRoute} _hover={{ color: "white", bgColor: "black" }} gap={2}>
+                      <RiAdminFill />
+                      Admin
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+              )}
 
               <Tooltip hasArrow label="Wishlist " bg="black" color="white">
-                <Button as={Link} to={"/wishlist"} backgroundColor={"white"}>
+                <Button _hover={{ bgColor: "transparent" }} as={Link} to={"/wishlist"} backgroundColor={"white"}>
                   <AiOutlineStar size={"20px"} />
                   {/* <p className="cartValue">{wishlist.length}</p> */}
                   <p className="cartValue">0</p>
                 </Button>
               </Tooltip>
               <Tooltip hasArrow label="Cart " bg="black" color="white">
-                <Button as={Link} to={"/cartpage"} backgroundColor={"white"}>
+                <Button _hover={{ bgColor: "transparent" }} as={Link} to={"/cartpage"} backgroundColor={"white"}>
                   <BiShoppingBag size={"20px"} />
                   {/* <p className="cartValue">{cartItems.length}</p> */}
                   <p className="cartValue">0</p>
@@ -354,7 +370,7 @@ const Navbar = () => {
                 </Button>
               </Tooltip>
               <Tooltip hasArrow label="Cart " bg="black" color="white">
-                <Button as={Link} to={"/cart"} backgroundColor={"white"}>
+                <Button as={Link} to={"/cartpage"} backgroundColor={"white"}>
                   <BiShoppingBag size={"20px"} />
                   <p className="cartValue">0</p>
                 </Button>

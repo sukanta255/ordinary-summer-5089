@@ -10,7 +10,6 @@
   padding: 2px 0;
   /* background: #eaeaea; */
   /* border: 3px solid red; */
-
 }
 
 .container {
@@ -72,7 +71,7 @@
 }
 
 .download span:hover {
-  color: rgba(0, 0, 0, 0.55)
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .download a img {
@@ -135,14 +134,11 @@
 
 .hot-logo {
   height: 40px;
-
 }
 
 #search-bar {
   width: 500px;
 }
-
-
 
 .cartValue {
   /* border: 1px solid #da3f3f; */
@@ -156,7 +152,7 @@
   text-align: center;
   left: 30px;
   font-size: 12px;
-
+  line-height: 20px;
 }
 
 #cart-icon {
@@ -167,7 +163,6 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
-
 }
 
 .dropdown-content {
@@ -201,8 +196,6 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
-
-
 }
 
 #dropdown-account-content {
@@ -217,13 +210,11 @@
   margin-top: 20px;
   padding: 20px;
   z-index: 10;
-
 }
 
 #dropdown-account:hover #dropdown-account-content {
   display: block;
 }
-
 
 #menu-dropdown {
   position: relative;
@@ -253,7 +244,6 @@
   padding: 15px;
   cursor: pointer;
   font-size: 15px;
-
 }
 
 .menu-title3 {
@@ -267,7 +257,6 @@
   background-color: black;
   color: white;
   cursor: pointer;
-
 }
 
 #menu-dropdown:hover .menu-dropdown-content {
@@ -290,7 +279,6 @@
   }
 
   #responsive_22 {
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -302,10 +290,8 @@
 @media only screen and (min-width: 1301px) {
   #responsive_22 {
     display: none;
-    border: 1px solid red
+    border: 1px solid red;
   }
-
-  ;
 }
 
 /*///////////////////////////////////// for popup of men women artist collab ///////////////////////////////////////////////////// */
@@ -343,7 +329,7 @@
   padding: 1px 20px;
   position: absolute;
   top: 20px;
-  transition: all 0.90s ease;
+  transition: all 0.9s ease;
   opacity: 0;
   display: none;
   position: absolute;
@@ -386,9 +372,9 @@
   padding-right: 30px;
 }
 
-.firstpop>h5,
+.firstpop > h5,
 p {
-  color: #4a4a4a
+  color: #4a4a4a;
 }
 
 .myaccount123 {

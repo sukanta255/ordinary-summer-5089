@@ -28,11 +28,11 @@ import {
   useDisclosure,
   Stack,
 } from "@chakra-ui/react";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/Productspage/ProductCard";
 
 import { FaAngleDown, FaStar } from "react-icons/fa";
-import { getFullData } from "../../API/ProductRequests";
-import PaginationComp from "./PaginationComp";
+import { getFullData } from "../API/ProductRequests";
+import PaginationComp from "../components/Productspage/PaginationComp";
 import { useNavigate } from "react-router-dom";
 
 const Productspage = () => {
