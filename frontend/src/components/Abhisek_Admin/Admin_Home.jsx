@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Admin_Home.module.css";
 import Admin_Sidebar from "./Admin_Sidebar";
 import userImg from "./icons/user_icon.png";
@@ -23,7 +23,34 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import MapComponent from "./MapComponent";
+import axios from "axios";
 const Admin_Home = () => {
+  const [data,setdata]=useState([])
+
+ 
+    let length
+const getData=async()=>{
+  let res=await axios.post("https://koovsbackend.onrender.com/admin/analytics",{ headers: { Authorization:localStorage.getItem("token") } })
+    console.log(res)
+    let data=await res.data.data;
+    console.log(data)
+    setdata(data)
+   
+}
+
+    useEffect(()=>{
+      getData()
+      
+    },[])
+
+  //  console.log(data)
+
+
+  let totalprice=data.reduce((acc,curr)=>{
+      return acc+(+curr.price)
+  },0)
+ let revenue= Math.ceil(totalprice)
+//  console.log(revenue)
   return (
     <Box
       className={styles.adminmain}
@@ -65,7 +92,7 @@ const Admin_Home = () => {
             display={"flex"}
           >
             <Box  w="70%">
-              <Button>{"1530"}</Button>
+              <Button>{data.length}</Button>
               <Text fontSize={["1xl", "1.5xl", "2xl"]} color={"white"}>
                 Total Product
               </Text>
@@ -90,7 +117,7 @@ const Admin_Home = () => {
             </Box>
             <Box  w="30%">
               <Image src={cartImg} w="100%" h="100%" ></Image>
-               //img
+               
             </Box>
           </Box>
           <Box
@@ -119,7 +146,7 @@ const Admin_Home = () => {
             display={"flex"}
           >
             <Box  w="70%">
-              <Button>{"9500000"}</Button>
+              <Button>{revenue}</Button>
               <Text fontSize={["1xl", "1.5xl", "2xl"]} color={"white"}>
                 Total Capital
               </Text>
@@ -152,7 +179,9 @@ const Admin_Home = () => {
           <Box w={["80%","75%","45%"]} h={"300px"} bg={"#dcbde8"} p="10px 20px 30px" m="auto">
             <MapComponent />
           </Box>
-          <Box w={["80%","75%","45%"]} h={"300px"} bg={"#71a9cd"} m="auto"></Box>
+          <Box w={["80%","75%","45%"]} h={"300px"} bg={"#71a9cd"} m="auto">
+            <Image h="100%" w="100%" src="https://www.shutterstock.com/image-vector/set-colourful-business-charts-diagram-260nw-1388414240.jpg" alt="graph"></Image>
+          </Box>
         </Flex>
       </Box>
     </Box>
