@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASEURL = "https://koovsbackend.onrender.com/users";
+const BASEURL = "http://localhost:4100/users";
 
 export const signUpAPI = async (userData) => {
   try {

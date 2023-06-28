@@ -8,19 +8,17 @@ export const AuthProvider = ({ children }) => {
   const toast = useToast();
   const myNav = useNavigate();
 
-  const [username, setUsername] = useState(localStorage.getItem("user") || "");
-  const [admin, setAdmin] = useState(localStorage.getItem("admin") || false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [admin, setAdmin] = useState(false);
   const disableOnStartRef = useRef(false);
 
-  const login = (username, admin) => {
-    setUsername(username);
-    setAdmin(admin);
-    setLoggedIn(true);
+  const login = () => {
+    setUsername(localStorage.getItem("user") || "");
+    setAdmin(localStorage.getItem("admin") || false);
   };
 
   useEffect(() => {
-    if (!username && !isLoggedIn && disableOnStartRef.current) {
+    if (username === "" && disableOnStartRef.current) {
       toast({
         position: "bottom-left",
         render: () => (
@@ -41,7 +39,6 @@ export const AuthProvider = ({ children }) => {
   }, [username, myNav, toast]);
 
   const logout = () => {
-    setLoggedIn(false);
     setUsername("");
     setAdmin(false);
   };

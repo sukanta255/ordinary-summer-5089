@@ -36,7 +36,7 @@ export default function Login() {
     onSubmit: async (values) => {
       const res = await LoginAPI(values);
 
-      if (res.status === false) {
+      if (!res.status) {
         setLoading(false);
         return customToast("red", res.error);
       }
@@ -47,7 +47,7 @@ export default function Login() {
       } else {
         localStorage.removeItem("admin");
       }
-      login(res.data.user, res.data.admin);
+      login();
       customToast("green", "Login Success, Redirecting...");
       return setTimeout(() => {
         myNav("/products");

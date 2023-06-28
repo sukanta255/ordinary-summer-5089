@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import { getData } from '../../API/requests';
 
-// https://koovsbackend.onrender.com/adddata
+// http://localhost:4100/adddata
 
 const PieChart = () => {
   const [data, setData] = useState([]);
