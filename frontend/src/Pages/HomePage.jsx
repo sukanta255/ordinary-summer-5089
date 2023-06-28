@@ -259,32 +259,32 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    axios.get("https://embarrassed-lamb-sweater.cyclic.app/shop_women").then((res) => {
+    axios.get("https://koovshome.onrender.com/shop_women").then((res) => {
       setWomenData(res.data);
     });
   }, []);
   useEffect(() => {
-    axios.get("https://embarrassed-lamb-sweater.cyclic.app/shop_men").then((res) => {
+    axios.get("https://koovshome.onrender.com/shop_men").then((res) => {
       setMenData(res.data);
     });
   }, []);
   useEffect(() => {
-    axios.get("https://embarrassed-lamb-sweater.cyclic.app/varsity-jackets").then((res) => {
+    axios.get("https://koovshome.onrender.com/varsity-jackets").then((res) => {
       setVarsityData(res.data);
     });
   }, []);
   useEffect(() => {
-    axios.get("https://embarrassed-lamb-sweater.cyclic.app/artist-collab").then((res) => {
+    axios.get("https://koovshome.onrender.com/artist-collab").then((res) => {
       setArtistData(res.data);
     });
   }, []);
   useEffect(() => {
-    axios.get("https://embarrassed-lamb-sweater.cyclic.app/koovs-women").then((res) => {
+    axios.get("https://koovshome.onrender.com/koovs-women").then((res) => {
       setKoovsWomenData(res.data);
     });
   }, []);
   useEffect(() => {
-    axios.get("https://embarrassed-lamb-sweater.cyclic.app/koovs-men").then((res) => {
+    axios.get("https://koovshome.onrender.com/koovs-men").then((res) => {
       setKoovsMenData(res.data);
     });
   }, []);

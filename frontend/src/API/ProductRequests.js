@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseURL = `https://koovsbackend.onrender.com/products`;
+const BaseURL = `http://localhost:4100/products`;
 
 export const getFullData = async (url) => {
   try {
